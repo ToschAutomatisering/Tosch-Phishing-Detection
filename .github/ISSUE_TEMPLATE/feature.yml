@@ -16,7 +16,7 @@ body:
 
         1. Search existing **open and closed** feature requests to avoid duplicates.
         2. Note that **repeat feature requests** are permitted if a previous request was closed more than 30 days ago.
-        3. Consider implementing the feature yourself by reviewing the [contribution guidelines](./CyberDrain/Check/blob/main/CONTRIBUTING.md).
+        3. Consider implementing the feature yourself by reviewing the CONTRIBUTING.md file.
         4. Feature requests that lack sufficient detail or feasibility may be closed at any time.
         5. **This request will auto-close in 14 days** if no meaningful progress or collaboration occurs.
         6. If you would like to work on this feature, comment `"I'd like to work on this please!"`

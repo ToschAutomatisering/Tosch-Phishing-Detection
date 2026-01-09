@@ -383,23 +383,23 @@ class CheckPopup {
       // Fallback to default branding if background script fails
       console.warn("Popup: Using fallback branding configuration");
       this.brandingConfig = {
-        companyName: "CyberDrain",
-        companyURL: "https://cyberdrain.com/",
+        companyName: "Tosch Automatisering",
+        companyURL: "https://tosch.nl/",
         productName: "Check",
         logoUrl: "images/tosch-icon-32.png",
-        supportUrl: "https://support.cyberdrain.com",
-        privacyPolicyUrl: "https://cyberdrain.com/privacy",
+        supportUrl: "https://tosch.nl/support",
+        privacyPolicyUrl: "https://tosch.nl/privacy",
         primaryColor: "#F77F00",
       };
     } catch (error) {
       console.error("Error loading branding configuration:", error);
       this.brandingConfig = {
-        companyName: "CyberDrain",
-        companyURL: "https://cyberdrain.com/",
+        companyName: "Tosch Automatisering",
+        companyURL: "https://tosch.nl/",
         productName: "Check",
         logoUrl: "images/tosch-icon-32.png",
-        supportUrl: "https://support.cyberdrain.com",
-        privacyPolicyUrl: "https://cyberdrain.com/privacy",
+        supportUrl: "https://tosch.nl/support",
+        privacyPolicyUrl: "https://tosch.nl/privacy",
         primaryColor: "#F77F00",
       };
     }

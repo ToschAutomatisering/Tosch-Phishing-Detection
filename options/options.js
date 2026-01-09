@@ -398,7 +398,7 @@ class CheckOptions {
         showNotifications: true,
         enableValidPageBadge: false,
         customRulesUrl:
-          "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json",
+          "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json",
         updateInterval: 24,
         enableDebugLogging: false,
         enableDeveloperConsoleLogging: false,
@@ -475,8 +475,8 @@ class CheckOptions {
       // Fallback to default branding if background script fails
       console.warn("Options: Using fallback branding configuration");
       this.brandingConfig = {
-        companyName: "CyberDrain",
-    companyURL: "https://cyberdrain.com/",
+        companyName: "Tosch Automatisering",
+    companyURL: "https://tosch.nl/",
         productName: "Check",
         primaryColor: "#F77F00",
         logoUrl: "images/tosch-icon-48.png",
@@ -484,8 +484,8 @@ class CheckOptions {
     } catch (error) {
       console.error("Error loading branding configuration:", error);
       this.brandingConfig = {
-        companyName: "CyberDrain",
-		    companyURL: "https://cyberdrain.com/",
+        companyName: "Tosch Automatisering",
+		    companyURL: "https://tosch.nl/",
         productName: "Check",
         primaryColor: "#F77F00",
         logoUrl: "images/tosch-icon-48.png",
@@ -2449,19 +2449,19 @@ class CheckOptions {
           cippServerUrl: "",
           cippTenantId: "",
           customRulesUrl:
-            "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json",
+            "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json",
           updateInterval: 24,
           enableDebugLogging: false,
           // Note: enableDeveloperConsoleLogging is not policy-managed - remains under user control
 
           // Custom branding (matches managed_schema.json structure)
           customBranding: {
-            companyName: "CyberDrain",
-            companyURL: "https://cyberdrain.com/",
+            companyName: "Tosch Automatisering",
+            companyURL: "https://tosch.nl/",
             productName: "Check Enterprise",
             primaryColor: "#F77F00",
             logoUrl:
-              "https://cyberdrain.com/images/favicon_hu_20e77b0e20e363e.png",
+              "https://tosch.nl/images/logo.png",
           },
         };
 
