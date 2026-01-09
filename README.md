@@ -1,4 +1,4 @@
-# Check
+# Tosch phishing detection - check
 
 An open-source, Manifest V3 browser extension for detecting phishing attacks that
 impersonate Microsoft 365 sign-in pages. This extension is developed by [Cyberdrain](https://github.com/cyberdrain/Check).
