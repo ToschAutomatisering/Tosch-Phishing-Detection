@@ -1,9 +1,7 @@
 # Check
 
 An open-source, Manifest V3 browser extension for detecting phishing attacks that
-impersonate Microsoft 365 sign-in pages.
-
-Install it from the [Chrome](https://chromewebstore.google.com/detail/benimdeioplgkhanklclahllklceahbe) Store here or the [Edge](https://microsoftedge.microsoft.com/addons/detail/check-by-cyberdrain/knepjpocdagponkonnbggpcnhnaikajg) store here.
+impersonate Microsoft 365 sign-in pages. This extension is developed by [Cyberdrain](https://github.com/cyberdrain/Check).
 
 **Firefox Support**: The extension also works on Firefox 109+. See [Firefox Support](docs/firefox-support.md) for installation instructions.
 
