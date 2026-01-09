@@ -1,9 +1,9 @@
 {
-  "companyName": "CyberDrain",
-  "companyURL": "https://cyberdrain.com/",
-  "productName": "Check",
+  "companyName": "Tosch",
+  "companyURL": "https://tosch.nl/",
+  "productName": "Tosch Phishing Detection",
   "version": "1.1.0",
-  "description": "Protect against phishing attacks targeting Microsoft 365 login pages with enterprise-grade detection",
+  "description": "Beschermt tegen phishing aanvallen gericht op Microsoft 365 login pagina's.",
   "branding": {
     "primaryColor": "#F77F00",
     "primaryHover": "#E56F00",
@@ -28,10 +28,10 @@
     "borderHover": "rgba(247, 127, 0, 0.3)"
   },
   "assets": {
-    "logoUrl": "images/icon48.png",
-    "iconUrl": "images/icon32.png",
-    "faviconUrl": "images/icon16.png",
-    "bannerUrl": "images/banner.png",
+    "logoUrl": "images/tosch-icon-48.png",
+    "iconUrl": "images/tosch-icon-32.png",
+    "faviconUrl": "images/tosch-icon-16.png",
+    "bannerUrl": "images/tosch-banner.png",
     "screenshotUrls": [
       "images/screenshot1.png",
       "images/screenshot2.png",
@@ -46,36 +46,36 @@
     "customIconsEnabled": true
   },
   "features": {
-    "welcomeMessage": "Welcome to Check, CyberDrain's Microsoft 365 Phishing Protection - Safeguard Your Organization",
-    "tagline": "Advanced phishing detection for Microsoft 365 login pages by CyberDrain",
-    "securityBadgeText": "Protected by CyberDrain",
-    "blockedPageTitle": "Phishing Attempt Blocked by CyberDrain",
-    "blockedPageMessage": "This page appears to be a phishing attempt targeting Microsoft 365 credentials. CyberDrain has blocked access to protect your organization."
+    "welcomeMessage": "Welkom bij Tosch Phishing Detection, de Microsoft 365 Phishing Bescherming van Tosch - Bescherm uw organisatie",
+    "tagline": "Geavanceerde phishingdetectie voor Microsoft 365 loginpagina's door Tosch",
+    "securityBadgeText": "Beschermd door Tosch Phishing Detection",
+    "blockedPageTitle": "Phishingpoging geblokkeerd door Tosch Phishing Detection",
+    "blockedPageMessage": "Deze pagina lijkt een phishingpoging te zijn gericht op Microsoft 365-inloggegevens. Tosch Phishing Detection heeft de toegang geblokkeerd om uw organisatie te beschermen."
   },
   "customText": {
-    "extensionDescription": "Check provides enterprise-grade detection and blocking of phishing attempts targeting Microsoft 365 login pages, with comprehensive policy management and audit capabilities.",
+    "extensionDescription": "Tosch Phishing Detection zorgt voor het blokkeren van phishingpogingen gericht op Microsoft 365 loginpagina's, met uitgebreide beleidsbeheer- en auditmogelijkheden.",
     "securityFeatures": [
-      "Real-time Microsoft 365 phishing detection",
-      "Advanced login page verification",
-      "Cryptographic verification badges",
-      "Enterprise policy enforcement",
-      "Comprehensive security audit logging",
-      "Custom detection rules engine"
+      "Real-time Microsoft 365 phishing detectie",
+      "Geavanceerde login pagina verificatie",
+      "Cryptografische verificatie badges",
+      "Enterprise beleidshandhaving",
+      "Uitgebreide beveiligingsaudit logging",
+      "Aangepaste detectieregels engine"
     ],
     "enterpriseFeatures": [
-      "Group Policy (GPO) support",
-      "Microsoft Intune integration",
-      "Centralized management console",
-      "Security compliance reporting",
-      "Custom phishing detection rules",
-      "24/7 enterprise security support"
+      "Group Policy (GPO) ondersteuning",
+      "Microsoft Intune integratie",
+      "Gecentraliseerde beheerconsole",
+      "Beveiligingsnalevingsrapportage",
+      "Aangepaste phishing detectieregels",
+      "24/7 enterprise beveiligingsondersteuning"
     ]
   },
   "socialMedia": {
-    "twitter": "https://twitter.com/cyberdrain",
-    "linkedin": "https://linkedin.com/company/cyberdrain",
-    "youtube": "https://youtube.com/c/cyberdrain",
-    "github": "https://github.com/cyberdrain"
+    "twitter": "",
+    "linkedin": "https://nl.linkedin.com/company/tosch-automatisering-bv",
+    "youtube": "",
+    "github": ""
   },
   "whiteLabel": {
     "enabled": true,

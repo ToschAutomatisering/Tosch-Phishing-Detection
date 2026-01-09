@@ -479,7 +479,7 @@ class CheckOptions {
     companyURL: "https://cyberdrain.com/",
         productName: "Check",
         primaryColor: "#F77F00",
-        logoUrl: "images/icon48.png",
+        logoUrl: "images/tosch-icon-48.png",
       };
     } catch (error) {
       console.error("Error loading branding configuration:", error);
@@ -488,7 +488,7 @@ class CheckOptions {
 		    companyURL: "https://cyberdrain.com/",
         productName: "Check",
         primaryColor: "#F77F00",
-        logoUrl: "images/icon48.png",
+        logoUrl: "images/tosch-icon-48.png",
       };
     }
   }
@@ -884,11 +884,11 @@ class CheckOptions {
 
     // Update sidebar logo
     const sidebarLogo = document.getElementById("sidebarLogo");
-    setLogoSrc(sidebarLogo, chrome.runtime.getURL("images/icon48.png"));
+    setLogoSrc(sidebarLogo, chrome.runtime.getURL("images/tosch-icon-48.png"));
 
     // Update mobile logo
     const mobileLogo = document.getElementById("mobileLogo");
-    setLogoSrc(mobileLogo, chrome.runtime.getURL("images/icon48.png"));
+    setLogoSrc(mobileLogo, chrome.runtime.getURL("images/tosch-icon-48.png"));
 
     // Apply primary color to the options page
     if (this.brandingConfig?.primaryColor) {
@@ -1036,26 +1036,26 @@ class CheckOptions {
     // Update page title and subtitle
     const sectionInfo = {
       general: {
-        title: "General Settings",
+        title: "Algemene Instellingen",
         subtitle:
-          "Configure basic phishing protection behavior and detection features",
+          "Configureer basis phishing bescherming en detectie functies",
       },
       detection: {
-        title: "Detection Rules",
-        subtitle: "Load custom detection rules for phishing protection",
+        title: "Detectieregels",
+        subtitle: "Laad aangepaste detectieregels voor phishingbescherming",
       },
       logs: {
-        title: "Activity Logs",
-        subtitle: "View security events and extension activity",
+        title: "Activiteitenlogboek",
+        subtitle: "Bekijk beveiligingsgebeurtenissen en extensie-activiteit",
       },
       branding: {
-        title: "Branding & White Labeling",
-        subtitle: "Customize the extension's appearance and branding",
+        title: "Huisstijl",
+        subtitle: "Pas de uitstraling en branding van de extensie aan",
       },
       about: {
-        title: "About Check, a product by CyberDrain",
+        title: "Over Tosch Phishing Detection",
         subtitle:
-          "Enterprise-grade protection against Microsoft 365 phishing attacks",
+          "Enterprise-grade bescherming tegen Microsoft 365 phishing aanvallen",
       },
     };
 

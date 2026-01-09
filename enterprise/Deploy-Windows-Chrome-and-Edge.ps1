@@ -30,10 +30,10 @@ $webhookUrl = "" # This will set the "Webhook URL" option; default is blank; if 
 $webhookEvents = @() # This will set the "Event Types" to send to the webhook; default is blank; if you set $enableGenericWebhook to 1, you can specify which events to send. Available events: "detection_alert", "false_positive_report", "page_blocked", "rogue_app_detected", "threat_detected", "validation_event". Example: @("detection_alert", "page_blocked", "threat_detected").
 
 # Custom Branding Settings
-$companyName = "CyberDrain" # This will set the "Company Name" option in the Custom Branding settings; default is "CyberDrain".
-$companyURL = "https://cyberdrain.com" # This will set the Company URL option in the Custom Branding settings; default is "https://cyberdrain.com"; Must include the protocol (e.g., https://).
-$productName = "Check - Phishing Protection" # This will set the "Product Name" option in the Custom Branding settings; default is "Check - Phishing Protection".
-$supportEmail = "" # This will set the "Support Email" option in the Custom Branding settings; default is blank.
+$companyName = "Tosch" # This will set the "Company Name" option in the Custom Branding settings; default is "CyberDrain".
+$companyURL = "https://tosch.nl" # This will set the Company URL option in the Custom Branding settings; default is "https://cyberdrain.com"; Must include the protocol (e.g., https://).
+$productName = "Tosch Phishing Detection" # This will set the "Product Name" option in the Custom Branding settings; default is "Check - Phishing Protection".
+$supportEmail = "support@tosch.nl" # This will set the "Support Email" option in the Custom Branding settings; default is blank.
 $primaryColor = "#F77F00" # This will set the "Primary Color" option in the Custom Branding settings; default is "#F77F00"; must be a valid hex color code (e.g., #FFFFFF).
 $logoUrl = "" # This will set the "Logo URL" option in the Custom Branding settings; default is blank. Must be a valid URL including the protocol (e.g., https://example.com/logo.png); protocol must be https; recommended size is 48x48 pixels with a maximum of 128x128.
 

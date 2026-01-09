@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check - Settings</title>
+    <title>Tosch Phishing Detection - Instellingen</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="options.css">
 </head>
@@ -12,32 +12,32 @@
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">
-                <img src="../images/icon48.png" alt="Check Logo" class="sidebar-logo" id="sidebarLogo">
+                <img src="../images/tosch-icon-48.png" alt="Tosch Logo" class="sidebar-logo" id="sidebarLogo">
                             <div class="sidebar-title">
-                <h2 id="sidebarTitle">Check</h2>
+                <h2 id="sidebarTitle">Tosch Phishing Detection</h2>
             </div>
             </div>
 
             <ul class="sidebar-menu">
                 <li><a href="#general" class="menu-item active" data-section="general">
                     <span class="menu-icon material-icons">settings</span>
-                    <span class="menu-text">General</span>
+                    <span class="menu-text">Algemeen</span>
                 </a></li>
-                <li><a href="#detection" class="menu-item" data-section="detection">
+                <!-- <li><a href="#detection" class="menu-item" data-section="detection">
                     <span class="menu-icon material-icons">search</span>
-                    <span class="menu-text">Detection Rules</span>
-                </a></li>
+                    <span class="menu-text">Detectieregels</span>
+                </a></li> -->
                 <li><a href="#logs" class="menu-item" data-section="logs">
                     <span class="menu-icon material-icons">assignment</span>
-                    <span class="menu-text">Activity Logs</span>
+                    <span class="menu-text">Activiteitenlogboek</span>
                 </a></li>
-                <li><a href="#branding" class="menu-item" data-section="branding">
+                <!-- <li><a href="#branding" class="menu-item" data-section="branding">
                     <span class="menu-icon material-icons">palette</span>
-                    <span class="menu-text">Branding</span>
-                </a></li>
+                    <span class="menu-text">Huisstijl</span>
+                </a></li> -->
                 <li><a href="#about" class="menu-item" data-section="about">
                     <span class="menu-icon material-icons">info</span>
-                    <span class="menu-text">About</span>
+                    <span class="menu-text">Over</span>
                 </a></li>
             </ul>
         </nav>
@@ -51,62 +51,62 @@
                         <span class="material-icons">menu</span>
                     </button>
                     <div class="header-mobile-logo">
-                        <img src="../images/icon48.png" alt="Check Logo" class="mobile-logo" id="mobileLogo">
-                        <span class="mobile-logo-text" id="mobileLogoText">Check</span>
+                        <img src="../images/tosch-icon-48.png" alt="Tosch Logo" class="mobile-logo" id="mobileLogo">
+                        <span class="mobile-logo-text" id="mobileLogoText">Tosch Phishing Detection</span>
                     </div>
                 </div>
                 <div class="header-title-section">
-                    <h1 id="pageTitle">General Settings</h1>
-                    <p class="header-subtitle" id="pageSubtitle">Configure basic phishing protection behavior and detection features</p>
+                    <h1 id="pageTitle">Algemene Instellingen</h1>
+                    <p class="header-subtitle" id="pageSubtitle">Configureer basis phishing bescherming en detectie functies</p>
                     <div class="policy-badge" id="policyBadge" style="display: none;">
                         <span class="material-icons">business</span>
-                        <span class="badge-text">Managed by Policy</span>
+                        <span class="badge-text">Beheerd door Beleid</span>
                     </div>
                 </div>
                 <div class="header-actions">
-                    <button class="btn btn-secondary" id="darkModeToggle" title="Toggle Dark Mode">
+                    <button class="btn btn-secondary" id="darkModeToggle" title="Schakel Donkere Modus">
                         <span class="material-icons" id="darkModeIcon">dark_mode</span>
                     </button>
-                    <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+                    <button class="btn btn-primary" id="saveSettings">Instellingen Opslaan</button>
                 </div>
             </header>
 
             <!-- Mobile Title Section (visible only on mobile) -->
             <div class="mobile-title-section">
-                <h1 id="mobileTitleText">General Settings</h1>
-                <p class="header-subtitle" id="mobileSubtitleText">Configure basic phishing protection behavior and detection features</p>
+                <h1 id="mobileTitleText">Algemene Instellingen</h1>
+                <p class="header-subtitle" id="mobileSubtitleText">Configureer basis phishing bescherming en detectie functies</p>
             </div>
 
             <!-- General Section -->
             <section id="general-section" class="settings-section active">
                 <div class="settings-grid">
                     <div class="setting-group">
-                        <h3>Extension Settings</h3>
+                        <h3>Extensie Instellingen</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="enablePageBlocking" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Enable Page Blocking
+                                Pagina Blokkering Inschakelen
                             </label>
-                            <p class="setting-description">Block access to detected phishing pages</p>
+                            <p class="setting-description">Blokkeer toegang tot gedetecteerde phishing pagina's</p>
                         </div>
 
-                        <div class="setting-item">
+                        <!-- <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="forceMainThreadPhishingProcessing" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Force Main Thread Phishing Processing
+                                Forceer Main Thread Phishing Verwerking
                             </label>
-                            <p class="setting-description">For debugging: disables background worker and forces phishing detection to run on the main thread (timing and logs will be more accurate, but performance may be reduced).</p>
+                            <p class="setting-description">Voor debugging: schakelt background worker uit en forceert phishing detectie op de main thread (timing en logs zijn nauwkeuriger, maar prestaties kunnen verminderen).</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="enableCippReporting" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Enable CIPP Reporting
+                                CIPP Rapportage Inschakelen
                             </label>
-                            <p class="setting-description">Send detection events to CIPP server for monitoring</p>
+                            <p class="setting-description">Stuur detectie gebeurtenissen naar CIPP server voor monitoring</p>
                         </div>
 
                         <div class="setting-item">
@@ -114,28 +114,28 @@
                                 CIPP Server URL
                                 <input type="url" id="cippServerUrl" class="setting-input" placeholder="https://your-cipp-server.com">
                             </label>
-                            <p class="setting-description">URL of your CIPP server for reporting Microsoft 365 logon detections</p>
+                            <p class="setting-description">URL van uw CIPP server voor het rapporteren van Microsoft 365 inlog detecties</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Tenant ID/Domain
-                                <input type="text" id="cippTenantId" class="setting-input" placeholder="contoso.onmicrosoft.com or tenant-guid">
+                                Tenant ID/Domein
+                                <input type="text" id="cippTenantId" class="setting-input" placeholder="contoso.onmicrosoft.com of tenant-guid">
                             </label>
-                            <p class="setting-description">Tenant identifier to include with CIPP alerts for multi-tenant environments</p>
-                        </div>
+                            <p class="setting-description">Tenant identificatie om mee te sturen met CIPP waarschuwingen voor multi-tenant omgevingen</p>
+                        </div> -->
 
                     </div>
 
-                    <div class="setting-group">
-                        <h3>Generic Webhook</h3>
+                    <!-- <div class="setting-group">
+                        <h3>Generieke Webhook</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="genericWebhookEnabled" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Enable Generic Webhook
+                                Generieke Webhook Inschakelen
                             </label>
-                            <p class="setting-description">Send events to a custom webhook endpoint</p>
+                            <p class="setting-description">Stuur gebeurtenissen naar een aangepast webhook eindpunt</p>
                         </div>
 
                         <div class="setting-item">
@@ -143,74 +143,74 @@
                                 Webhook URL
                                 <input type="url" id="genericWebhookUrl" class="setting-input" placeholder="https://webhook.example.com/endpoint">
                             </label>
-                            <p class="setting-description">URL to receive webhook payloads</p>
+                            <p class="setting-description">URL om webhook payloads te ontvangen</p>
                         </div>
 
                         <div class="setting-item">
-                            <label class="setting-label">Event Types to Send</label>
+                            <label class="setting-label">Gebeurtenistypes om te versturen</label>
                             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_detection_alert" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    Detection Alerts
+                                    Detectie Waarschuwingen
                                 </label>
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_false_positive_report" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    False Positive Reports
+                                    False Positive Rapporten
                                 </label>
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_page_blocked" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    Page Blocked
+                                    Pagina Geblokkeerd
                                 </label>
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_rogue_app_detected" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    Rogue App Detected
+                                    Rogue App Gedetecteerd
                                 </label>
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_threat_detected" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    Threat Detected
+                                    Bedreiging Gedetecteerd
                                 </label>
                                 <label class="setting-label">
                                     <input type="checkbox" id="webhookEvent_validation_event" class="setting-checkbox">
                                     <span class="checkbox-custom"></span>
-                                    Validation Events
+                                    Validatie Gebeurtenissen
                                 </label>
                             </div>
-                            <p class="setting-description">Select which event types to send to the webhook</p>
+                            <p class="setting-description">Selecteer welke gebeurtenistypes naar de webhook worden gestuurd</p>
                         </div>
 
-                    </div>
+                    </div> -->
 
                     <div class="setting-group">
-                        <h3>User Interface</h3>
+                        <h3>Gebruikersinterface</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="showNotifications" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Show Notifications
+                                Toon Meldingen
                             </label>
-                            <p class="setting-description">Display security notifications and warnings</p>
+                            <p class="setting-description">Toon beveiligingsmeldingen en waarschuwingen</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="enableValidPageBadge" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Show Valid Page Badge
+                                Toon Geldige Pagina Badge
                             </label>
-                            <p class="setting-description">Display a verification badge on legitimate Microsoft 365 login pages</p>
+                            <p class="setting-description">Toon een verificatie badge op legitieme Microsoft 365 inlogpagina's</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Valid Page Badge Timeout (seconds)
+                                Geldige Pagina Badge Timeout (seconden)
                                 <input type="number" id="validPageBadgeTimeout" class="setting-input" min="0" max="300" step="1" value="5" required>
                             </label>
-                            <p class="setting-description">Auto-dismiss timeout for the valid page badge in seconds. Set to 0 for no timeout (badge stays visible until manually dismissed).</p>
+                            <p class="setting-description">Auto-sluit timeout voor de geldige pagina badge in seconden. Zet op 0 voor geen timeout (badge blijft zichtbaar tot handmatig gesloten).</p>
                         </div>
                     </div>
                 </div>
@@ -221,99 +221,99 @@
             <section id="detection-section" class="settings-section">
                 <div class="settings-grid">
                     <div class="setting-group">
-                        <h3>Detection Configuration</h3>
+                        <h3>Detectie Configuratie</h3>
                         <div class="setting-item">
                             <label class="setting-label">
-                                Config URL
+                                Configuratie URL
                                 <input type="url" id="customRulesUrl" class="setting-input" placeholder="https://raw.githubusercontent.com/CyberDrain/ProjectX/refs/heads/main/rules/detection-rules.json">
                             </label>
-                            <p class="setting-description">URL to fetch detection configuration from (leave empty for default)</p>
+                            <p class="setting-description">URL om detectie configuratie op te halen (laat leeg voor standaard)</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Update Interval (hours)
+                                Update Interval (uren)
                                 <input type="number" id="updateInterval" class="setting-input" min="1" max="168" value="24">
                             </label>
-                            <p class="setting-description">How often to update detection rules</p>
+                            <p class="setting-description">Hoe vaak detectieregels updaten</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                URL Allowlist (Regex or URL with wildcards)
-                                <textarea id="urlAllowlist" class="setting-textarea" rows="6" placeholder="Enter URLs or regex patterns, one per line:&#10;&#10;Simple URLs with wildcards:&#10;https://google.com/*&#10;https://*.microsoft.com/*&#10;&#10;Advanced regex patterns:&#10;^https://trusted\.example\.com/.*"></textarea>
+                                URL Toegestane Lijst (Regex of URL met wildcards)
+                                <textarea id="urlAllowlist" class="setting-textarea" rows="6" placeholder="Voer URL's of regex patronen in, één per regel:&#10;&#10;Simpele URL's met wildcards:&#10;https://google.com/*&#10;https://*.microsoft.com/*&#10;&#10;Geavanceerde regex patronen:&#10;^https://trusted\.example\.com/.*"></textarea>
                             </label>
-                            <p class="setting-description">Add URLs or regex patterns to allowlist from detection. Use simple URLs with * wildcards (e.g., https://google.com/*) or advanced regex patterns. These will be added to the exclusion rules without replacing the entire ruleset.</p>
+                            <p class="setting-description">Voeg URL's of regex patronen toe aan de toegestane lijst om uit te sluiten van detectie. Gebruik simpele URL's met * wildcards (bijv. https://google.com/*) of geavanceerde regex patronen. Deze worden toegevoegd aan de uitsluitingsregels zonder de gehele regelset te vervangen.</p>
                         </div>
 
                         <div class="setting-item">
                             <div class="setting-actions">
                                 <button class="btn btn-secondary" id="refreshDetectionRules">
                                     <span class="material-icons">refresh</span>
-                                    Update Rules Now
+                                    Regels Nu Updaten
                                 </button>
                             </div>
-                            <p class="setting-description">Manually update detection rules from the remote source</p>
+                            <p class="setting-description">Handmatig detectieregels updaten van de externe bron</p>
                         </div>
                     </div>
 
                     <div class="setting-group">
                         <div class="config-header">
-                            <h3>Configuration Overview</h3>
+                            <h3>Configuratie Overzicht</h3>
                             <button class="btn btn-secondary small" id="toggleConfigView">
                                 <span class="material-icons">code</span>
-                                Show Raw JSON
+                                Toon Ruwe JSON
                             </button>
                         </div>
                         <div id="configDisplay" class="config-display">
-                            <div class="config-loading">Loading configuration...</div>
+                            <div class="config-loading">Configuratie laden...</div>
                             <div id="configSummary" class="config-summary" style="display:none;">
-                                <h4>Phishing Indicators with Code-Driven Logic</h4>
+                                <h4>Phishing Indicatoren met Code-Driven Logica</h4>
                                 <div id="codeDrivenIndicators"></div>
-                                <h4>Other Key Settings</h4>
+                                <h4>Andere Belangrijke Instellingen</h4>
                                 <ul id="configKeySettings"></ul>
                             </div>
                         </div>
-                        <p class="setting-description">Read-only view of the current detection rules and configuration</p>
+                        <p class="setting-description">Alleen-lezen weergave van de huidige detectieregels en configuratie</p>
                     </div>
 
                     <div class="setting-group" id="rulePlaygroundGroup">
                         <div class="config-header">
-                            <h3>Rule Playground (Beta)</h3>
-                            <button class="btn btn-secondary small" id="loadCurrentRulesBtn" title="Load current cached rules into editor">
+                            <h3>Regel playground (Beta)</h3>
+                            <button class="btn btn-secondary small" id="loadCurrentRulesBtn" title="Laad huidige gecachte regels in editor">
                                 <span class="material-icons">download</span>
-                                Load Current
+                                Laad Huidige
                             </button>
                         </div>
-                        <p class="setting-description">Prototype and test detection rules locally. These changes are NOT saved to the extension unless you manually update the rules file.</p>
+                        <p class="setting-description">Prototype en test detectieregels lokaal. Deze wijzigingen worden NIET opgeslagen in de extensie tenzij u handmatig het regelbestand bijwerkt.</p>
                         <div class="playground-grid">
                             <div class="playground-column">
-                                <label class="setting-label stacked-label">Candidate Rules JSON
-                                    <textarea id="playgroundRulesInput" class="playground-textarea" data-playground-input="true" spellcheck="false" placeholder="Paste a single rule object or an array / partial detection-rules.json fragment..."></textarea>
+                                <label class="setting-label stacked-label">Kandidaat Regels JSON
+                                    <textarea id="playgroundRulesInput" class="playground-textarea" data-playground-input="true" spellcheck="false" placeholder="Plak een enkel regel object of een array / gedeeltelijk detection-rules.json fragment..."></textarea>
                                 </label>
                                 <div class="playground-inline-actions">
-                                    <button class="btn btn-secondary" id="validateRulesBtn"><span class="material-icons">check</span> Validate</button>
-                                    <button class="btn btn-secondary" id="sanitizeRulesBtn"><span class="material-icons">cleaning_services</span> Sanitize</button>
-                                    <button class="btn btn-secondary" id="copyRulesBtn"><span class="material-icons">content_copy</span> Copy</button>
+                                    <button class="btn btn-secondary" id="validateRulesBtn"><span class="material-icons">check</span> Valideren</button>
+                                    <button class="btn btn-secondary" id="sanitizeRulesBtn"><span class="material-icons">cleaning_services</span> Opschonen</button>
+                                    <button class="btn btn-secondary" id="copyRulesBtn"><span class="material-icons">content_copy</span> Kopiëren</button>
                                 </div>
                             </div>
                             <div class="playground-column">
                                 <label class="setting-label">Test URL
                                     <input type="url" id="playgroundTestUrl" class="setting-input" data-playground-input="true" placeholder="https://example.com/phish" />
                                 </label>
-                                <label class="setting-label stacked-label"> Sample HTML (will not fetch live)
-                                    <textarea id="playgroundHtmlInput" class="playground-textarea small" data-playground-input="true" spellcheck="false" placeholder="Paste sample page HTML here to simulate scanning..."></textarea>
+                                <label class="setting-label stacked-label"> Voorbeeld HTML (haalt niet live op)
+                                    <textarea id="playgroundHtmlInput" class="playground-textarea small" data-playground-input="true" spellcheck="false" placeholder="Plak voorbeeld pagina HTML hier om scannen te simuleren..."></textarea>
                                 </label>
                                 <div class="playground-inline-actions">
-                                    <button class="btn btn-primary" id="runRuleTestBtn"><span class="material-icons">play_arrow</span> Test Rules</button>
-                                    <button class="btn btn-secondary" id="clearPlaygroundBtn"><span class="material-icons">clear</span> Clear</button>
+                                    <button class="btn btn-primary" id="runRuleTestBtn"><span class="material-icons">play_arrow</span> Test Regels</button>
+                                    <button class="btn btn-secondary" id="clearPlaygroundBtn"><span class="material-icons">clear</span> Wissen</button>
                                 </div>
                             </div>
                         </div>
                         <div class="playground-results" id="playgroundResults" aria-live="polite">
-                            <div class="playground-placeholder">No test run yet. Paste rules and click Test.</div>
+                            <div class="playground-placeholder">Nog geen test uitgevoerd. Plak regels en klik op Test.</div>
                         </div>
-                        <p class="setting-description">The playground reuses the same rule matching logic as the content script where possible. Some complex rule types may not be fully simulated.</p>
+                        <p class="setting-description">De speeltuin hergebruikt dezelfde regel matching logica als het content script waar mogelijk. Sommige complexe regeltypes worden mogelijk niet volledig gesimuleerd.</p>
                     </div>
                 </div>
             </section>
@@ -325,45 +325,45 @@
                         <label class="setting-label">
                             <input type="checkbox" id="enableDeveloperConsoleLogging" class="setting-checkbox">
                             <span class="checkbox-custom"></span>
-                            Developer Mode (enables debug logging)
+                            Ontwikkelaarsmodus (schakelt debug logging in)
                         </label>
-                        <label class="setting-label">
+                        <!-- <label class="setting-label">
                             <input type="checkbox" id="simulateEnterpriseMode" class="setting-checkbox">
                             <span class="checkbox-custom"></span>
-                            Simulate Enterprise Policy Mode (Dev Only)
-                        </label>
-                        <select id="logFilter" class="setting-select" title="Filter activity log entries by type">
-                            <option value="all">All Events</option>
-                            <option value="security">Security Events</option>
-                            <option value="url_access">URL Access</option>
-                            <option value="threat_detected">Threats Detected</option>
-                            <option value="page_scanned">Page Scans</option>
-                            <option value="debug">Debug Events</option>
+                            Simuleer Enterprise Beleidsmodus (Alleen Dev)
+                        </label> -->
+                        <select id="logFilter" class="setting-select" title="Filter activiteitenlogboek items op type">
+                            <option value="all">Alle Gebeurtenissen</option>
+                            <option value="security">Beveiligingsgebeurtenissen</option>
+                            <option value="url_access">URL Toegang</option>
+                            <option value="threat_detected">Bedreigingen Gedetecteerd</option>
+                            <option value="page_scanned">Pagina Scans</option>
+                            <option value="debug">Debug Gebeurtenissen</option>
                         </select>
-                        <button class="btn btn-primary" id="refreshLogs">Refresh</button>
-                        <button class="btn btn-secondary" id="clearLogs">Clear Logs</button>
-                        <button class="btn btn-secondary" id="exportLogs">Export Logs</button>
+                        <button class="btn btn-primary" id="refreshLogs">Verversen</button>
+                        <button class="btn btn-secondary" id="clearLogs">Logs Wissen</button>
+                        <button class="btn btn-secondary" id="exportLogs">Logs Exporteren</button>
                     </div>
                 </div>
 
                 <div class="logs-container">
                     <div class="logs-header">
-                        <div class="log-column-header timestamp">Timestamp</div>
-                        <div class="log-column-header event-type">Event Type</div>
-                        <div class="log-column-header url">URL/Domain</div>
-                        <div class="log-column-header threat-level">Threat Level</div>
-                        <div class="log-column-header action">Action Taken</div>
+                        <div class="log-column-header timestamp">Tijdstempel</div>
+                        <div class="log-column-header event-type">Gebeurtenistype</div>
+                        <div class="log-column-header url">URL/Domein</div>
+                        <div class="log-column-header threat-level">Bedreigingsniveau</div>
+                        <div class="log-column-header action">Ondernomen Actie</div>
                         <div class="log-column-header details">Details</div>
                         <div class="log-column-header expand"></div>
                     </div>
                     <div class="logs-list" id="logsList">
                         <div class="log-entry">
-                            <div class="log-column timestamp">Loading...</div>
+                            <div class="log-column timestamp">Laden...</div>
                             <div class="log-column event-type">system</div>
                             <div class="log-column url">-</div>
                             <div class="log-column threat-level">-</div>
                             <div class="log-column action">-</div>
-                            <div class="log-column details">Loading activity logs...</div>
+                            <div class="log-column details">Activiteitenlogboek laden...</div>
                         </div>
                     </div>
                 </div>
@@ -373,70 +373,70 @@
             <section id="branding-section" class="settings-section">
                 <div class="settings-grid">
                     <div class="setting-group">
-                        <h3>Company Information</h3>
+                        <h3>Bedrijfsinformatie</h3>
                         <div class="setting-item">
                             <label class="setting-label">
-                                Company Name
-                                <input type="text" id="companyName" class="setting-input" placeholder="Your Company Name">
+                                Bedrijfsnaam
+                                <input type="text" id="companyName" class="setting-input" placeholder="Tosch">
                             </label>
-                            <p class="setting-description">Company name displayed in the extension</p>
+                            <p class="setting-description">Bedrijfsnaam weergegeven in de extensie</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Company URL
-                                <input type="url" id="companyURL" class="setting-input" placeholder="https://yourcompany.com">
+                                Bedrijfs URL
+                                <input type="url" id="companyURL" class="setting-input" placeholder="https://tosch.nl">
                             </label>
-                            <p class="setting-description">Your company website URL</p>
+                            <p class="setting-description">Uw bedrijfswebsite URL</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Product Name
-                                <input type="text" id="productName" class="setting-input" placeholder="Custom Extension Name">
+                                Productnaam
+                                <input type="text" id="productName" class="setting-input" placeholder="Tosch Phishing Detection">
                             </label>
-                            <p class="setting-description">Custom name for the extension</p>
+                            <p class="setting-description">Aangepaste naam voor de extensie</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Support Email
-                                <input type="email" id="supportEmail" class="setting-input" placeholder="support@yourcompany.com">
+                                Ondersteuning E-mail
+                                <input type="email" id="supportEmail" class="setting-input" placeholder="info@tosch.nl">
                             </label>
-                            <p class="setting-description">Email address for user support</p>
+                            <p class="setting-description">E-mailadres voor gebruikersondersteuning</p>
                         </div>
                     </div>
 
                     <div class="setting-group">
-                        <h3>Visual Customization</h3>
+                        <h3>Visuele Aanpassing</h3>
                         <div class="setting-item">
                             <label class="setting-label">
-                                Primary Color
+                                Primaire Kleur
                                 <input type="color" id="primaryColor" class="setting-color" value="#2563eb">
                             </label>
-                            <p class="setting-description">Main theme color for the extension</p>
+                            <p class="setting-description">Hoofdthema kleur voor de extensie</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 Logo URL
-                                <input type="url" id="logoUrl" class="setting-input" placeholder="https://yourcompany.com/logo.png">
+                                <input type="url" id="logoUrl" class="setting-input" placeholder="https://uwbedrijf.nl/logo.png">
                             </label>
-                            <p class="setting-description">URL to your company logo</p>
+                            <p class="setting-description">URL naar uw bedrijfslogo</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="branding-preview">
-                    <h3>Preview</h3>
+                    <h3>Voorbeeld</h3>
                     <div class="preview-popup" id="brandingPreview">
                         <div class="preview-header">
-                            <img src="../images/icon32.png" alt="Check Logo" class="preview-logo" id="previewLogo">
-                            <span class="preview-title" id="previewTitle">Check</span>
+                            <img src="../images/tosch-icon-32.png" alt="Tosch Logo" class="preview-logo" id="previewLogo">
+                            <span class="preview-title" id="previewTitle">Tosch Phishing Detection</span>
                         </div>
                         <div class="preview-content">
-                            <p>This is how your branding will appear in the extension popup.</p>
-                            <button class="preview-button" id="previewButton">Sample Button</button>
+                            <p>Dit is hoe uw huisstijl eruit zal zien in de extensie popup.</p>
+                            <button class="preview-button" id="previewButton">Voorbeeld Knop</button>
                         </div>
                     </div>
                 </div>
@@ -448,29 +448,29 @@
                     <div class="setting-group">
                         <div class="about-split-container">
                             <div class="about-left-panel">
-                                <h3>About Check</h3>
+                                <h3>About Tosch Phishing Detection</h3>
                                 <div class="cyberdrain-info">
                                     <div class="company-logo">
-                                        <img src="../images/icon48.png" alt="Check Logo" class="company-logo-img">
+                                        <img src="../images/tosch-icon-48.png" alt="Check Logo" class="company-logo-img">
                                     </div>
                                     <div class="product-description">
-                                        <p><strong>Check</strong> is an advanced browser extension that provides real-time protection against Microsoft 365 phishing attacks. Designed for enterprises and managed service providers, Check uses sophisticated detection algorithms to identify and block malicious login pages before credentials can be compromised.</p>
-                                        <p>The extension integrates seamlessly with existing security workflows, offering centralized management, comprehensive logging, and CIPP integration for MSPs managing multiple Microsoft 365 tenants.</p>
+                                        <p><strong>Tosch Phishing Detection</strong> is een geavanceerde browserextensie die real-time bescherming biedt tegen Microsoft 365 phishing-aanvallen. Speciaal ontworpen voor ondernemingen en managed service providers, Check gebruikt geavanceerde detectie-algoritmen om kwaadaardige inlogpagina's te identificeren en blokkeren voordat inloggegevens kunnen worden gecompromitteerd.</p>
+                                        <p>De extensie integreert naadloos met bestaande beveiligingsworkflows en biedt gecentraliseerd beheer, uitgebreide logging en CIPP-integratie voor MSP's die meerdere Microsoft 365-tenants beheren.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="about-divider"></div>
 
                             <div class="about-right-panel">
-                                <h3>Created by CyberDrain</h3>
+                                <h3>Gemaakt door CyberDrain</h3>
                                 <div class="cyberdrain-info">
                                     <div class="company-logo">
                                         <img src="../images/cyberdrain-light-square.svg" alt="CyberDrain" class="company-logo-img cyberdrain-shield-light">
                                         <img src="../images/cyberdrain-dark-square.svg" alt="CyberDrain" class="company-logo-img cyberdrain-shield-dark">
                                     </div>
                                     <div class="company-description">
-                                        <p><strong>CyberDrain</strong> is a leading provider of Microsoft 365 automation and security solutions for Managed Service Providers (MSPs) and enterprises worldwide.</p>
-                                        <p>With a focus on innovation, CyberDrain delivers enterprise-grade tools that streamline Microsoft 365 management and enhance security posture through automation.</p>
+                                        <p>Deze tool is gemaakt door <strong>CyberDrain</strong>, een toonaangevende leverancier van Microsoft 365-automatiserings- en beveiligingsoplossingen voor Managed Service Providers (MSP's) en ondernemingen wereldwijd.</p>
+                                        <p>Met een focus op innovatie levert CyberDrain enterprise-grade tools die het beheer van Microsoft 365 stroomlijnen en de beveiligingspositie verbeteren door middel van automatisering.</p>
                                     </div>
                                 </div>
                             </div>
@@ -512,12 +512,12 @@
                                         <span class="material-icons link-arrow">open_in_new</span>
                                     </a>
 
-                                    <a href="https://cyberdrain.com/" target="_blank" class="link-card">
+                                    <a href="https://tosch.nl/" target="_blank" class="link-card">
                                         <div class="link-icon">
                                             <span class="material-icons">language</span>
                                         </div>
                                         <div class="link-content">
-                                            <h4>CyberDrain Website</h4>
+                                            <h4>Tosch Website</h4>
                                             <p>Learn more about our solutions</p>
                                         </div>
                                         <span class="material-icons link-arrow">open_in_new</span>
@@ -555,11 +555,11 @@
     <!-- Confirmation Modal -->
     <div class="modal-overlay" id="modalOverlay" style="display: none;">
         <div class="modal">
-            <h3 class="modal-title" id="modalTitle">Confirm Action</h3>
-            <p class="modal-message" id="modalMessage">Are you sure you want to proceed?</p>
+            <h3 class="modal-title" id="modalTitle">Bevestig Actie</h3>
+            <p class="modal-message" id="modalMessage">Weet u zeker dat u wilt doorgaan?</p>
             <div class="modal-actions">
-                <button class="btn btn-secondary" id="modalCancel">Cancel</button>
-                <button class="btn btn-primary" id="modalConfirm">Confirm</button>
+                <button class="btn btn-secondary" id="modalCancel">Annuleren</button>
+                <button class="btn btn-primary" id="modalConfirm">Bevestigen</button>
             </div>
         </div>
     </div>

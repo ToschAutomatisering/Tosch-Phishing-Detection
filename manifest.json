@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Check by CyberDrain",
+  "name": "Tosch Phishing Detection",
   "version": "1.1.0",
-  "description": "Protect against phishing attacks targeting Microsoft 365 login pages with enterprise-grade detection",
+  "description": "Beschermt tegen phishing aanvallen gericht op Microsoft 365 login pagina's.",
   "permissions": [
     "storage",
     "activeTab",
@@ -29,20 +29,20 @@
   ],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "Check",
+    "default_title": "Tosch Phishing Detection",
     "default_icon": {
-      "16": "images/icon16.png",
-      "32": "images/icon32.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+      "16": "images/tosch-icon-16.png",
+      "32": "images/tosch-icon-32.png",
+      "48": "images/tosch-icon-48.png",
+      "128": "images/tosch-icon-128.png"
     }
   },
   "options_page": "options/options.html",
   "icons": {
-    "16": "images/icon16.png",
-    "32": "images/icon32.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "16": "images/tosch-icon-16.png",
+    "32": "images/tosch-icon-32.png",
+    "48": "images/tosch-icon-48.png",
+    "128": "images/tosch-icon-128.png"
   },
   "web_accessible_resources": [
     {

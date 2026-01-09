@@ -386,7 +386,7 @@ class CheckPopup {
         companyName: "CyberDrain",
         companyURL: "https://cyberdrain.com/",
         productName: "Check",
-        logoUrl: "images/icon32.png",
+        logoUrl: "images/tosch-icon-32.png",
         supportUrl: "https://support.cyberdrain.com",
         privacyPolicyUrl: "https://cyberdrain.com/privacy",
         primaryColor: "#F77F00",
@@ -397,7 +397,7 @@ class CheckPopup {
         companyName: "CyberDrain",
         companyURL: "https://cyberdrain.com/",
         productName: "Check",
-        logoUrl: "images/icon32.png",
+        logoUrl: "images/tosch-icon-32.png",
         supportUrl: "https://support.cyberdrain.com",
         privacyPolicyUrl: "https://cyberdrain.com/privacy",
         primaryColor: "#F77F00",
@@ -430,13 +430,13 @@ class CheckPopup {
       testImg.onerror = () => {
         console.warn("Failed to load custom logo, using default");
         this.elements.brandingLogo.src =
-          chrome.runtime.getURL("images/icon32.png");
+          chrome.runtime.getURL("images/tosch-icon-32.png");
       };
       testImg.src = logoSrc;
     } else {
       console.log("No custom logo, using default");
       this.elements.brandingLogo.src =
-        chrome.runtime.getURL("images/icon32.png");
+        chrome.runtime.getURL("images/tosch-icon-32.png");
     }
 
     // Update company name
@@ -1087,10 +1087,10 @@ class CheckPopup {
     let url = "";
     switch (linkType) {
       case "support":
-        url = this.brandingConfig.supportUrl;
+        url = "https://tosch.nl/contact/";
         break;
       case "privacy":
-        url = this.brandingConfig.privacyPolicyUrl;
+        url = "https://tosch.nl/privacybeleid";
         break;
       case "about":
         url = chrome.runtime.getURL("options/options.html#about");

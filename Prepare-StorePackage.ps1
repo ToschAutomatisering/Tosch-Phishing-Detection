@@ -105,7 +105,7 @@ if (Test-Path $optionsPath) {
 }
 
 # Create the package
-$packageName = "check-extension-v$Version.zip"
+$packageName = "toschPhishingDetection-extension-v$Version.zip"
 $packagePath = Join-Path $OutputPath $packageName
 
 # Remove existing package if it exists

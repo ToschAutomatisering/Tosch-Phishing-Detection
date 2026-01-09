@@ -203,6 +203,8 @@ if (window.checkExtensionLoaded) {
     return changed;
   }
 
+  
+
   /**
    * Schedule threat-triggered re-scans with progressive delays
    * Automatically re-scans when threats detected to catch late-loading content
@@ -5665,7 +5667,7 @@ if (window.checkExtensionLoaded) {
             branding.companyName || branding.productName || "CyberDrain";
           const supportEmail = branding.supportEmail || "";
           let logoUrl = branding.logoUrl || "";
-          const packagedFallback = chrome.runtime.getURL("images/icon48.png");
+          const packagedFallback = chrome.runtime.getURL("images/tosch-icon-48.png");
           // Simplified: rely on upstream input validation; only fallback when empty/falsy
           if (!logoUrl) {
             logoUrl = packagedFallback;

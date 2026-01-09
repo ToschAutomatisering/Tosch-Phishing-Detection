@@ -2,103 +2,103 @@
   "type": "object",
   "properties": {
     "showNotifications": {
-      "title": "Show Notifications",
-      "description": "Display security notifications and warnings",
+      "title": "Meldingen weergeven",
+      "description": "Beveiligingsmeldingen en waarschuwingen weergeven",
       "type": "boolean",
       "default": true
     },
     "enableValidPageBadge": {
-      "title": "Show Valid Page Badge",
-      "description": "Display validation badge on legitimate Microsoft login pages",
+      "title": "Geldige paginabadge weergeven",
+      "description": "Validatiebadge weergeven op legitieme Microsoft-aanmeldingspagina's",
       "type": "boolean",
       "default": true
     },
     "validPageBadgeTimeout": {
-      "title": "Valid Page Badge Timeout (seconds)",
-      "description": "Auto-dismiss timeout for the valid page badge in seconds. Set to 0 for no timeout (badge stays visible until manually dismissed).",
+      "title": "Time-out geldige paginabadge (seconden)",
+      "description": "Automatische verwijderingstijd voor de geldige paginabadge in seconden. Stel in op 0 voor geen time-out (badge blijft zichtbaar totdat het handmatig wordt gesloten).",
       "type": "integer",
       "minimum": 0,
       "maximum": 300,
       "default": 5
     },
     "enablePageBlocking": {
-      "title": "Page Blocking Enabled",
-      "description": "Enable blocking of malicious pages",
+      "title": "Paginavergrendeling ingeschakeld",
+      "description": "Blokkering van kwaadwillende pagina's inschakelen",
       "type": "boolean",
       "default": true
     },
     "enableCippReporting": {
-      "title": "CIPP Reporting Enabled",
-      "description": "Enable reporting to CIPP server",
+      "title": "CIPP-rapportage ingeschakeld",
+      "description": "Rapportage naar CIPP-server inschakelen",
       "type": "boolean",
       "default": false
     },
     "cippServerUrl": {
-      "title": "CIPP Server URL",
-      "description": "Base URL for CIPP reporting server",
+      "title": "CIPP Server-URL",
+      "description": "Basis-URL voor CIPP-rapportageserver",
       "type": "string",
       "format": "uri",
       "default": ""
     },
     "cippTenantId": {
-      "title": "CIPP Tenant ID/Domain",
-      "description": "Tenant identifier to include with CIPP alerts for multi-tenant environments",
+      "title": "CIPP Tenant-ID/Domein",
+      "description": "Tenant-ID om op te nemen bij CIPP-waarschuwingen voor multi-tenant-omgevingen",
       "type": "string",
       "default": ""
     },
     "customRulesUrl": {
-      "title": "Custom Rules URL",
-      "description": "URL to fetch custom detection rules from",
+      "title": "Aangepaste regelset-URL",
+      "description": "URL om aangepaste detectieregels van op te halen",
       "type": "string",
       "format": "uri",
       "default": ""
     },
     "updateInterval": {
-      "title": "Update Interval (hours)",
-      "description": "How often to update detection rules in hours",
+      "title": "Update-interval (uren)",
+      "description": "Hoe vaak detectieregels moeten worden bijgewerkt in uren",
       "type": "integer",
       "minimum": 1,
       "maximum": 168,
       "default": 24
     },
     "urlAllowlist": {
-      "title": "URL Allowlist (URLs with wildcards or Regex)",
-      "description": "Array of URL patterns or regex patterns to allowlist URLs from detection. Supports simple URLs with * wildcards (e.g., https://google.com/*) or advanced regex patterns.",
+      "title": "URL-allowlijst (URL's met jokertekens of regex)",
+      "description": "Matrix van URL-patronen of regex-patronen om URL's van detectie toe te staan. Ondersteunt eenvoudige URL's met * jokertekens (bijv. https://google.com/*) of geavanceerde regex-patronen.",
       "type": "array",
       "items": {
         "type": "string",
-        "title": "URL Pattern or Regex",
-        "description": "URL with wildcards (e.g., https://google.com/*) or regular expression pattern to match URLs that should be allowlisted"
+        "title": "URL-patroon of regex",
+        "description": "URL met jokertekens (bijv. https://google.com/*) of reguliere-expressieparatroon om URL's af te stemmen die moeten worden toegestaan"
       },
       "default": []
     },
     "enableDebugLogging": {
-      "title": "Debug Logging Enabled",
-      "description": "Enable debug logging for troubleshooting",
+      "title": "Foutopsporingslogboeken ingeschakeld",
+      "description": "Foutopsporingslogboeken inschakelen voor probleemoplossing",
       "type": "boolean",
       "default": false
     },
     "genericWebhook": {
-      "title": "Generic Webhook",
-      "description": "Generic webhook configuration for sending detection events to custom endpoint",
+      "title": "Algemene webhook",
+      "description": "Algemene webhook-configuratie voor het verzenden van detectiegebeurtenissen naar aangepast eindpunt",
       "type": "object",
       "properties": {
         "enabled": {
-          "title": "Enabled",
-          "description": "Enable generic webhook",
+          "title": "Ingeschakeld",
+          "description": "Algemene webhook inschakelen",
           "type": "boolean",
           "default": false
         },
         "url": {
-          "title": "Webhook URL",
-          "description": "The URL to send webhook payloads to",
+          "title": "Webhook-URL",
+          "description": "De URL waarnaar webhook-payloads moeten worden verzonden",
           "type": "string",
           "format": "uri",
           "default": ""
         },
         "events": {
-          "title": "Event Types",
-          "description": "Array of event types to send to this webhook",
+          "title": "Gebeurtenistypen",
+          "description": "Matrix van gebeurtenistypen die naar deze webhook moeten worden verzonden",
           "type": "array",
           "items": {
             "type": "string",
@@ -116,45 +116,45 @@
       }
     },
     "customBranding": {
-      "title": "Custom Branding",
-      "description": "Custom branding configuration for white labeling",
+      "title": "Aangepast branding",
+      "description": "Aangepaste branding-configuratie voor white labeling",
       "type": "object",
       "properties": {
         "companyName": {
-          "title": "Company Name",
-          "description": "Company name to display in the extension",
+          "title": "Bedrijfsnaam",
+          "description": "Bedrijfsnaam om in de extensie weer te geven",
           "type": "string",
           "default": ""
         },
 		"companyURL": {
-          "title": "Company URL",
-          "description": "Company URL used in the extension",
+          "title": "Bedrijfs-URL",
+          "description": "Bedrijfs-URL gebruikt in de extensie",
           "type": "string",
-          "default": "https://cyberdrain.com/"
+          "default": "https://tosch.nl/"
         },
         "productName": {
-          "title": "Product Name",
-          "description": "Custom name for the extension",
+          "title": "Productnaam",
+          "description": "Aangepaste naam voor de extensie",
           "type": "string",
           "default": ""
         },
         "supportEmail": {
-          "title": "Support Email",
-          "description": "Email address for user support",
+          "title": "Ondersteuning e-mailadres",
+          "description": "E-mailadres voor gebruikersondersteuning",
           "type": "string",
           "format": "email",
           "default": ""
         },
         "primaryColor": {
-          "title": "Primary Color",
-          "description": "Primary theme color (hex code)",
+          "title": "Primaire kleur",
+          "description": "Primaire theminkleur (hexadecimale code)",
           "type": "string",
           "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
           "default": "#F77F00"
         },
         "logoUrl": {
-          "title": "Logo URL",
-          "description": "URL to company logo",
+          "title": "Logo-URL",
+          "description": "URL naar bedrijfslogo",
           "type": "string",
           "format": "uri",
           "default": ""

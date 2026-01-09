@@ -553,14 +553,14 @@ async function loadBranding() {
               "Failed to load custom logo, using default Check logo"
             );
             // Fall back to default Check logo
-            customLogo.src = chrome.runtime.getURL("images/icon128.png");
+            customLogo.src = chrome.runtime.getURL("images/tosch-icon-128.png");
             customLogo.style.display = "block";
             defaultIcon.style.display = "none";
           };
         } else {
           console.log("No custom logo configured, using default Check logo");
           // Use default Check logo instead of Unicode icon
-          customLogo.src = chrome.runtime.getURL("images/icon48.png");
+          customLogo.src = chrome.runtime.getURL("images/tosch-icon-48.png");
           customLogo.style.width = "80px";
           customLogo.style.height = "80px";
           customLogo.style.borderRadius = "50%";

@@ -115,11 +115,10 @@ export class ConfigManager {
 
           // Custom branding (matches managed_schema.json structure)
           customBranding: {
-            companyName: "CyberDrain",
-            productName: "Check Enterprise",
+            companyName: "Tosch",
+            productName: "Tosch Phishing Detection",
             primaryColor: "#F77F00",
-            logoUrl:
-              "https://cyberdrain.com/images/favicon_hu_20e77b0e20e363e.png",
+            logoUrl: "images/tosch-icon-48.png",
           },
         };
       }
