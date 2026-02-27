@@ -34,7 +34,8 @@
     "^https:\\/\\/[^.]*\\.bing\\.com$",
     "^https:\\/\\/github\\.com$",
     "^https:\\/\\/.*\\.cloud\\.microsoft$",
-    "^https:\\/\\/([^.]+\\.)*live\\.com(/.*)?$"
+    "^https:\\/\\/([^.]+\\.)*live\\.com(/.*)?$",
+    "^https:\\/\\/([^.]+\\.)*xbox\\.com(/.*)?$"
   ],
   "exclusion_system": {
     "description": "Centralized exclusion system to prevent false positives on legitimate sites (Microsoft partners, SSO providers, major platforms)",
