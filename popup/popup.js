@@ -795,10 +795,10 @@ class CheckPopup {
       this.showSecurityBadge("safe", "Trusted Login Domain");
       this.hideThreats();
     } else if (analysis.verdict === "ms-login-unknown") {
-      this.showSecurityBadge("warning", "MS Login - Unknown Domain");
+      this.showSecurityBadge("warning", "Microsoft login on unknown domain");
       this.hideThreats();
     } else if (analysis.verdict === "not-evaluated") {
-      this.showSecurityBadge("neutral", "Not Microsoft Login");
+      this.showSecurityBadge("neutral", "No Microsoft login found");
       this.hideThreats();
     } else {
       // For general Microsoft domains or other safe sites - show neutral, no badge

@@ -1036,26 +1036,26 @@ class CheckOptions {
     // Update page title and subtitle
     const sectionInfo = {
       general: {
-        title: "Algemene Instellingen",
+        title: "General Settings",
         subtitle:
-          "Configureer basis phishing bescherming en detectie functies",
+          "Configure core phishing protection and detection features",
       },
       detection: {
-        title: "Detectieregels",
-        subtitle: "Laad aangepaste detectieregels voor phishingbescherming",
+        title: "Detection Rules",
+        subtitle: "Load custom detection rules for phishing protection",
       },
       logs: {
-        title: "Activiteitenlogboek",
-        subtitle: "Bekijk beveiligingsgebeurtenissen en extensie-activiteit",
+        title: "Activity Log",
+        subtitle: "Review security events and extension activity",
       },
       branding: {
-        title: "Huisstijl",
-        subtitle: "Pas de uitstraling en branding van de extensie aan",
+        title: "Branding",
+        subtitle: "Customize the extension look and brand identity",
       },
       about: {
-        title: "Over Tosch Phishing Detection",
+        title: "About Tosch Phishing Detection",
         subtitle:
-          "Enterprise-grade bescherming tegen Microsoft 365 phishing aanvallen",
+          "Enterprise-grade protection against Microsoft 365 phishing attacks",
       },
     };
 
