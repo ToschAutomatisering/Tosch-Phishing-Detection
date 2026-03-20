@@ -430,13 +430,13 @@ class CheckPopup {
       testImg.onerror = () => {
         console.warn("Failed to load custom logo, using default");
         this.elements.brandingLogo.src =
-          chrome.runtime.getURL("images/tosch-icon-32.png");
+          chrome.runtime.getURL("images/tosch-icon-128.png");
       };
       testImg.src = logoSrc;
     } else {
       console.log("No custom logo, using default");
       this.elements.brandingLogo.src =
-        chrome.runtime.getURL("images/tosch-icon-32.png");
+        chrome.runtime.getURL("images/tosch-icon-128.png");
     }
 
     // Update company name

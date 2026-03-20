@@ -56,24 +56,24 @@
                     </div>
                 </div>
                 <div class="header-title-section">
-                    <h1 id="pageTitle">General Settings</h1>
+                    <h1 id="pageTitle">General settings</h1>
                     <p class="header-subtitle" id="pageSubtitle">Configure core phishing protection and detection features</p>
                     <div class="policy-badge" id="policyBadge" style="display: none;">
                         <span class="material-icons">business</span>
-                        <span class="badge-text">Managed by Policy</span>
+                        <span class="badge-text">Managed by policy</span>
                     </div>
                 </div>
                 <div class="header-actions">
                     <button class="btn btn-secondary" id="darkModeToggle" title="Toggle Dark Mode">
                         <span class="material-icons" id="darkModeIcon">dark_mode</span>
                     </button>
-                    <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+                    <button class="btn btn-primary" id="saveSettings">Save settings</button>
                 </div>
             </header>
 
             <!-- Mobile Title Section (visible only on mobile) -->
             <div class="mobile-title-section">
-                <h1 id="mobileTitleText">General Settings</h1>
+                <h1 id="mobileTitleText">General settings</h1>
                 <p class="header-subtitle" id="mobileSubtitleText">Configure core phishing protection and detection features</p>
             </div>
 
@@ -86,7 +86,7 @@
                             <label class="setting-label">
                                 <input type="checkbox" id="enablePageBlocking" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Enable Page Blocking
+                                Enable page blocking
                             </label>
                             <p class="setting-description">Block access to detected phishing pages</p>
                         </div>
@@ -191,7 +191,7 @@
                             <label class="setting-label">
                                 <input type="checkbox" id="showNotifications" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Show Notifications
+                                Show notifications
                             </label>
                             <p class="setting-description">Show security notifications and warnings</p>
                         </div>
@@ -200,14 +200,14 @@
                             <label class="setting-label">
                                 <input type="checkbox" id="enableValidPageBadge" class="setting-checkbox">
                                 <span class="checkbox-custom"></span>
-                                Show Valid Page Badge
+                                Show valid page badge
                             </label>
                             <p class="setting-description">Show a verification badge on legitimate Microsoft 365 sign-in pages</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Valid Page Badge Timeout (seconds)
+                                Valid page badge timeout (seconds)
                                 <input type="number" id="validPageBadgeTimeout" class="setting-input" min="0" max="300" step="1" value="5" required>
                             </label>
                             <p class="setting-description">Auto-close timeout for the valid page badge in seconds. Set to 0 for no timeout (badge remains visible until manually closed).</p>
@@ -232,7 +232,7 @@
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                Update Interval (hours)
+                                Update interval (hours)
                                 <input type="number" id="updateInterval" class="setting-input" min="1" max="168" value="24">
                             </label>
                             <p class="setting-description">How often detection rules are updated</p>
@@ -240,7 +240,7 @@
 
                         <div class="setting-item">
                             <label class="setting-label">
-                                URL Allowlist (Regex or wildcard URL)
+                                URL allowlist (regex or wildcard URL)
                                 <textarea id="urlAllowlist" class="setting-textarea" rows="6" placeholder="Enter URLs or regex patterns, one per line:&#10;&#10;Simple wildcard URLs:&#10;https://google.com/*&#10;https://*.microsoft.com/*&#10;&#10;Advanced regex patterns:&#10;^https://trusted\.example\.com/.*"></textarea>
                             </label>
                             <p class="setting-description">Add URLs or regex patterns to the allowlist to exclude them from detection. Use simple wildcard URLs (for example, https://google.com/*) or advanced regex patterns. These are added to exclusion rules without replacing the full ruleset.</p>
@@ -250,7 +250,7 @@
                             <div class="setting-actions">
                                 <button class="btn btn-secondary" id="refreshDetectionRules">
                                     <span class="material-icons">refresh</span>
-                                    Update Rules Now
+                                    Update rules now
                                 </button>
                             </div>
                             <p class="setting-description">Manually update detection rules from the external source</p>
@@ -259,18 +259,18 @@
 
                     <div class="setting-group">
                         <div class="config-header">
-                            <h3>Configuration Overview</h3>
+                            <h3>Configuration overview</h3>
                             <button class="btn btn-secondary small" id="toggleConfigView">
                                 <span class="material-icons">code</span>
-                                Show Raw JSON
+                                Show raw JSON
                             </button>
                         </div>
                         <div id="configDisplay" class="config-display">
                             <div class="config-loading">Loading configuration...</div>
                             <div id="configSummary" class="config-summary" style="display:none;">
-                                <h4>Phishing Indicators with Code-Driven Logic</h4>
+                                <h4>Phishing indicators with code-Driven logic</h4>
                                 <div id="codeDrivenIndicators"></div>
-                                <h4>Other Key Settings</h4>
+                                <h4>Other key settings</h4>
                                 <ul id="configKeySettings"></ul>
                             </div>
                         </div>
@@ -288,7 +288,7 @@
                         <p class="setting-description">Prototype and test detection rules locally. These changes are NOT saved in the extension unless you manually update the rules file.</p>
                         <div class="playground-grid">
                             <div class="playground-column">
-                                <label class="setting-label stacked-label">Candidate Rules JSON
+                                <label class="setting-label stacked-label">Candidate rules JSON
                                     <textarea id="playgroundRulesInput" class="playground-textarea" data-playground-input="true" spellcheck="false" placeholder="Paste a single rule object, array, or partial detection-rules.json fragment..."></textarea>
                                 </label>
                                 <div class="playground-inline-actions">
@@ -507,15 +507,15 @@
                         <div class="version-info-section">
                             <div class="version-info">
                                 <div class="version-item">
-                                    <span class="version-label">Extension Version:</span>
+                                    <span class="version-label">Extension version:</span>
                                     <span class="version-value" id="extensionVersion">1.0.0</span>
                                 </div>
                                 <div class="version-item">
-                                    <span class="version-label">Detection Rules Version:</span>
+                                    <span class="version-label">Detection rules version:</span>
                                     <span class="version-value" id="rulesVersion">Loading...</span>
                                 </div>
                                 <div class="version-item">
-                                    <span class="version-label">Last Updated:</span>
+                                    <span class="version-label">Last updated:</span>
                                     <span class="version-value" id="lastUpdated">Loading...</span>
                                 </div>
                             </div>
@@ -533,7 +533,7 @@
     <!-- Confirmation Modal -->
     <div class="modal-overlay" id="modalOverlay" style="display: none;">
         <div class="modal">
-            <h3 class="modal-title" id="modalTitle">Confirm Action</h3>
+            <h3 class="modal-title" id="modalTitle">Confirm action</h3>
             <p class="modal-message" id="modalMessage">Are you sure you want to continue?</p>
             <div class="modal-actions">
                 <button class="btn btn-secondary" id="modalCancel">Cancel</button>

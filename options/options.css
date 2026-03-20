@@ -13,8 +13,8 @@
 }
 
 :root {
-  --primary-color: #f77f00;
-  --primary-hover: #db7000;
+  --primary-color:  #FF6F00 ;
+  --primary-hover:  #FF6F00 ;
   --primary-color-light: rgba(247, 127, 0, 0.14);
   --primary-dark: #003049;
   --secondary-teal-dark: #005c63;
@@ -49,7 +49,7 @@
     radial-gradient(circle at 0% 100%, rgba(90, 196, 255, 0.14) 0%, rgba(90, 196, 255, 0) 48%),
     linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
   --sidebar-panel-gradient: linear-gradient(190deg, #ffffff 0%, #f4f8fd 65%, #eff5fc 100%);
-  --sidebar-header-gradient: linear-gradient(120deg, rgba(0, 48, 73, 0.97) 0%, rgba(0, 92, 99, 0.95) 66%, rgba(90, 196, 255, 0.92) 100%);
+  --sidebar-header-gradient: #FF6F00;
   --header-surface: rgba(248, 250, 252, 0.92);
   --card-surface: #ffffff;
   --card-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
@@ -99,7 +99,7 @@
       radial-gradient(circle at 0% 100%, rgba(90, 196, 255, 0.2) 0%, rgba(90, 196, 255, 0) 48%),
       linear-gradient(180deg, #070e1a 0%, #0d1b31 100%);
     --sidebar-panel-gradient: linear-gradient(190deg, #0d1a2f 0%, #12233e 70%, #132847 100%);
-    --sidebar-header-gradient: linear-gradient(120deg, #102947 0%, #0d3b46 66%, #1f5f8d 100%);
+    --sidebar-header-gradient: #FF6F00;
     --header-surface: rgba(10, 18, 32, 0.88);
     --card-surface: #0f1b31;
     --card-shadow: 0 16px 36px rgba(0, 0, 0, 0.36);
@@ -129,7 +129,7 @@
     radial-gradient(circle at 0% 100%, rgba(90, 196, 255, 0.14) 0%, rgba(90, 196, 255, 0) 48%),
     linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
   --sidebar-panel-gradient: linear-gradient(190deg, #ffffff 0%, #f4f8fd 65%, #eff5fc 100%);
-  --sidebar-header-gradient: linear-gradient(120deg, rgba(0, 48, 73, 0.97) 0%, rgba(0, 92, 99, 0.95) 66%, rgba(90, 196, 255, 0.92) 100%);
+  --sidebar-header-gradient: #FF6F00;
   --header-surface: rgba(248, 250, 252, 0.92);
   --card-surface: #ffffff;
   --card-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
@@ -251,7 +251,7 @@ body {
 }
 
 .menu-item.active {
-  background: linear-gradient(90deg, #f77f00 0%, #db7000 100%) !important;
+  background: linear-gradient(90deg,  #FF6F00  0%,  #FF6F00  100%) !important;
   color: white !important;
   box-shadow: var(--menu-active-shadow);
 }
@@ -1054,15 +1054,15 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #f77f00 0%, #db7000 100%);
+  background: linear-gradient(90deg,  #FF6F00  0%,  #FF6F00 100%);
   color: white;
   border-color: var(--primary-color);
   box-shadow: 0 8px 18px rgba(247, 127, 0, 0.24);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(90deg, #db7000 0%, #bf5f00 100%);
-  border-color: #db7000;
+  background: linear-gradient(90deg,  #FF6F00  0%,  #FF6F00 100%);
+  border-color:  #FF6F00 ;
   transform: translateY(-1px);
 }
 
