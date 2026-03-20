@@ -10,11 +10,11 @@ export class DetectionRulesManager {
   constructor() {
     this.cachedRules = null;
     this.lastUpdate = 0;
-    this.updateInterval = 24 * 60 * 60 * 1000; // Default: 24 hours
+    this.updateInterval = 1 * 60 * 60 * 1000; // Default: 1 hour
     this.cacheKey = "detection_rules_cache";
     this.fallbackUrl = chrome.runtime.getURL("rules/detection-rules.json");
     this.remoteUrl =
-      "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json";
+      "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json";
     this.config = null;
     this.initialized = false;
   }
