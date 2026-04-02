@@ -55,6 +55,7 @@
       "^https:\\/\\/[^/]*\\.apple\\.com(/.*)?$",
       "^https:\\/\\/[^/]*\\.dynamics\\.com(/.*)?$",
       "^https:\\/\\/(?:[^/]*\\.)?zoom\\.us(/.*)?$",
+      "^https:\\/\\/(?:[^/]*\\.)?twinfield\\.com(/.*)?$",
       "^https:\\/\\/github\\.com(/.*)?$",
       "^https:\\/\\/[^/]*\\.github\\.com(/.*)?$",
       "^https:\\/\\/[^/]*\\.github\\.io(/.*)?$"
