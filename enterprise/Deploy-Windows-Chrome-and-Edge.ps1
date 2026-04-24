@@ -22,6 +22,7 @@ $cippTenantId = "" # This will set the "Tenant ID/Domain" option in the extensio
 $customRulesUrl = "" # This will set the "Config URL" option in the Detection Configuration settings; default is blank.
 $updateInterval = 24 # This will set the "Update Interval" option in the Detection Configuration settings; default is 24 (hours). Range: 1-168 hours (1 hour to 1 week).
 $urlAllowlist = @() # This will set the "URL Allowlist" option in the Detection Configuration settings; default is blank; if you want to add multiple URLs, add them as a comma-separated list within the brackets (e.g., @("https://example1.com", "https://example2.com")). Supports simple URLs with * wildcard (e.g., https://*.example.com) or advanced regex patterns (e.g., ^https:\/\/(www\.)?example\.com\/.*$).
+$domainSquattingEnabled = 1 # 0 = Disabled, 1 = Enabled; default is 1; controls domain squatting detection from managed policy/config.
 $enableDebugLogging = 0 # 0 = Unchecked, 1 = Checked (Enabled); default is 0; This will set the "Enable Debug Logging" option in the Activity Log settings.
 
 # Generic Webhook Settings
@@ -66,6 +67,13 @@ function Configure-ExtensionSettings {
     New-ItemProperty -Path $ManagedStorageKey -Name "updateInterval" -PropertyType DWord -Value $updateInterval -Force | Out-Null
     New-ItemProperty -Path $ManagedStorageKey -Name "enableDebugLogging" -PropertyType DWord -Value $enableDebugLogging -Force | Out-Null
 
+    # Create and configure domain squatting policy settings
+    $domainSquattingKey = "$ManagedStorageKey\domainSquatting"
+    if (!(Test-Path $domainSquattingKey)) {
+        New-Item -Path $domainSquattingKey -Force | Out-Null
+    }
+    New-ItemProperty -Path $domainSquattingKey -Name "enabled" -PropertyType DWord -Value $domainSquattingEnabled -Force | Out-Null
+
     # Create and configure URL allow list
     $urlAllowlistKey = "$ManagedStorageKey\urlAllowlist"
     if (!(Test-Path $urlAllowlistKey)) {
@@ -90,9 +98,11 @@ function Configure-ExtensionSettings {
 
     # Set custom branding settings
     New-ItemProperty -Path $customBrandingKey -Name "companyName" -PropertyType String -Value $companyName -Force | Out-Null
-    New-ItemProperty -Path $customBrandingKey -Name "companyURL" -PropertyType String -Value $companyURL -Force | Out-Null
     New-ItemProperty -Path $customBrandingKey -Name "productName" -PropertyType String -Value $productName -Force | Out-Null
     New-ItemProperty -Path $customBrandingKey -Name "supportEmail" -PropertyType String -Value $supportEmail -Force | Out-Null
+    New-ItemProperty -Path $customBrandingKey -Name "supportUrl" -PropertyType String -Value $supportUrl -Force | Out-Null
+    New-ItemProperty -Path $customBrandingKey -Name "privacyPolicyUrl" -PropertyType String -Value $privacyPolicyUrl -Force | Out-Null
+    New-ItemProperty -Path $customBrandingKey -Name "aboutUrl" -PropertyType String -Value $aboutUrl -Force | Out-Null
     New-ItemProperty -Path $customBrandingKey -Name "primaryColor" -PropertyType String -Value $primaryColor -Force | Out-Null
     New-ItemProperty -Path $customBrandingKey -Name "logoUrl" -PropertyType String -Value $logoUrl -Force | Out-Null
 
