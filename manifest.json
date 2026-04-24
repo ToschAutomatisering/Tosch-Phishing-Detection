@@ -39,10 +39,10 @@
   },
   "options_page": "options/options.html",
   "icons": {
-    "16": "images/tosch-icon-16.png",
-    "32": "images/tosch-icon-32.png",
-    "48": "images/tosch-icon-48.png",
-    "128": "images/tosch-icon-128.png"
+    "16": "images/tosch-icon-16-oranje.png",
+    "32": "images/tosch-icon-32-oranje.png",
+    "48": "images/tosch-icon-48-oranje.png",
+    "128": "images/tosch-icon-128-oranje.png"
   },
   "web_accessible_resources": [
     {
