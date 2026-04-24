@@ -5782,13 +5782,13 @@ if (window.checkExtensionLoaded) {
 
       // Determine banner type and styling based on analysis data
       let bannerTitle = "Suspicious Microsoft 365 Login Page";
-      let bannerIcon = "⚠️";
+      let bannerIcon = "";
       let bannerColor = "linear-gradient(135deg, #ff9800, #f57c00)"; // Orange for warnings
 
       // Check for scanning state
       if (analysisData?.severity === "scanning") {
         bannerTitle = "Security Scan in Progress";
-        bannerIcon = "🔍";
+        bannerIcon = "";
         bannerColor = "linear-gradient(135deg, #2196f3, #1976d2)"; // Blue for scanning
       }
       // Check for rogue app detection
@@ -5797,16 +5797,16 @@ if (window.checkExtensionLoaded) {
         reason.toLowerCase().includes("rogue oauth") ||
         reason.toLowerCase().includes("rogue app")
       ) {
-        bannerTitle = "🚨 CRITICAL SECURITY THREAT";
-        bannerIcon = "🛡️";
+        bannerTitle = "CRITICAL SECURITY THREAT";
+        bannerIcon = "";
         bannerColor = "linear-gradient(135deg, #f44336, #d32f2f)"; // Red for critical threats
       } else if (analysisData?.severity === "critical") {
         bannerTitle = "Critical Security Warning";
-        bannerIcon = "🚨";
+        bannerIcon = "";
         bannerColor = "linear-gradient(135deg, #f44336, #d32f2f)"; // Red for critical
       } else if (analysisData?.severity === "high") {
         bannerTitle = "High Risk Security Warning";
-        bannerIcon = "⚠️";
+        bannerIcon = "";
         bannerColor = "linear-gradient(135deg, #ff5722, #d84315)"; // Orange-red for high risk
       }
 
