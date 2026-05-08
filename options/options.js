@@ -937,6 +937,18 @@ class CheckOptions {
       this.elements.enablePageBlocking.checked =
         this.config?.enablePageBlocking !== false;
     }
+    if (this.elements.extensionEnabled) {
+      this.elements.extensionEnabled.checked =
+        this.config?.extensionEnabled !== false;
+    }
+    if (this.elements.enableContentManipulation) {
+      this.elements.enableContentManipulation.checked =
+        this.config?.enableContentManipulation !== false;
+    }
+    if (this.elements.enableUrlMonitoring) {
+      this.elements.enableUrlMonitoring.checked =
+        this.config?.enableUrlMonitoring !== false;
+    }
     if (this.elements.enableCippReporting) {
       this.elements.enableCippReporting.checked =
         this.config?.enableCippReporting || false;
@@ -1039,16 +1051,32 @@ class CheckOptions {
     }
 
     // Branding settings
-    this.elements.companyName.value = this.brandingConfig?.companyName || "";
-    this.elements.productName.value = this.brandingConfig?.productName || "";
-    this.elements.supportEmail.value = this.brandingConfig?.supportEmail || "";
-    this.elements.supportUrl.value = this.brandingConfig?.supportUrl || "";
-    this.elements.privacyPolicyUrl.value =
-      this.brandingConfig?.privacyPolicyUrl || "";
-    this.elements.aboutUrl.value = this.brandingConfig?.aboutUrl || "";
-    this.elements.primaryColor.value =
-    this.brandingConfig?.primaryColor || "#F77F00";
-    this.elements.logoUrl.value = this.brandingConfig?.logoUrl || "";
+    if (this.elements.companyName) {
+      this.elements.companyName.value = this.brandingConfig?.companyName || "";
+    }
+    if (this.elements.productName) {
+      this.elements.productName.value = this.brandingConfig?.productName || "";
+    }
+    if (this.elements.supportEmail) {
+      this.elements.supportEmail.value = this.brandingConfig?.supportEmail || "";
+    }
+    if (this.elements.supportUrl) {
+      this.elements.supportUrl.value = this.brandingConfig?.supportUrl || "";
+    }
+    if (this.elements.privacyPolicyUrl) {
+      this.elements.privacyPolicyUrl.value =
+        this.brandingConfig?.privacyPolicyUrl || "";
+    }
+    if (this.elements.aboutUrl) {
+      this.elements.aboutUrl.value = this.brandingConfig?.aboutUrl || "";
+    }
+    if (this.elements.primaryColor) {
+      this.elements.primaryColor.value =
+        this.brandingConfig?.primaryColor || "#F77F00";
+    }
+    if (this.elements.logoUrl) {
+      this.elements.logoUrl.value = this.brandingConfig?.logoUrl || "";
+    }
   }
 
   switchSection(sectionName) {
@@ -1210,6 +1238,10 @@ class CheckOptions {
 
       const formData = {
       // Extension settings
+      extensionEnabled: this.elements.extensionEnabled?.checked !== false,
+      enableContentManipulation:
+        this.elements.enableContentManipulation?.checked !== false,
+      enableUrlMonitoring: this.elements.enableUrlMonitoring?.checked !== false,
       enablePageBlocking: this.elements.enablePageBlocking?.checked !== false,
       enableCippReporting: this.elements.enableCippReporting?.checked || false,
       cippServerUrl: this.elements.cippServerUrl?.value || "",
@@ -1394,14 +1426,22 @@ class CheckOptions {
 
   gatherBrandingData() {
     return {
-      companyName: this.elements.companyName.value,
-      productName: this.elements.productName.value,
-      supportEmail: this.elements.supportEmail.value,
-      supportUrl: this.elements.supportUrl.value,
-      privacyPolicyUrl: this.elements.privacyPolicyUrl.value,
-      aboutUrl: this.elements.aboutUrl.value,
-      primaryColor: this.elements.primaryColor.value,
-      logoUrl: this.elements.logoUrl.value,
+      companyName:
+        this.elements.companyName?.value ?? this.brandingConfig?.companyName ?? "",
+      productName:
+        this.elements.productName?.value ?? this.brandingConfig?.productName ?? "",
+      supportEmail:
+        this.elements.supportEmail?.value ?? this.brandingConfig?.supportEmail ?? "",
+      supportUrl:
+        this.elements.supportUrl?.value ?? this.brandingConfig?.supportUrl ?? "",
+      privacyPolicyUrl:
+        this.elements.privacyPolicyUrl?.value ?? this.brandingConfig?.privacyPolicyUrl ?? "",
+      aboutUrl:
+        this.elements.aboutUrl?.value ?? this.brandingConfig?.aboutUrl ?? "",
+      primaryColor:
+        this.elements.primaryColor?.value ?? this.brandingConfig?.primaryColor ?? "",
+      logoUrl:
+        this.elements.logoUrl?.value ?? this.brandingConfig?.logoUrl ?? "",
     };
   }
 

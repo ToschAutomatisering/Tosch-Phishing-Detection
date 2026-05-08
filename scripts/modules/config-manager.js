@@ -108,7 +108,7 @@ export class ConfigManager {
           cippServerUrl: "",
           cippTenantId: "",
           customRulesUrl:
-            "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json",
+            "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json",
           updateInterval: 24,
           enableDebugLogging: false,
           domainSquatting: {
@@ -297,7 +297,7 @@ export class ConfigManager {
       enableDebugLogging: false,
 
       // Custom rules - centralized at top level
-      customRulesUrl: "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json",
+      customRulesUrl: "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json",
       updateInterval: 24, // hours
 
       // Domain squatting runtime settings
