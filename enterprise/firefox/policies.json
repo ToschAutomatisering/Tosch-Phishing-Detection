@@ -25,7 +25,7 @@
           "enableCippReporting": false,
           "cippServerUrl": "",
           "cippTenantId": "",
-          "customRulesUrl": "https://raw.githubusercontent.com/CyberDrain/Check/refs/heads/main/rules/detection-rules.json",
+          "customRulesUrl": "https://raw.githubusercontent.com/ToschAutomatisering/Tosch-Phishing-Detection/refs/heads/main/rules/detection-rules.json",
           "updateInterval": 24,
           "urlAllowlist": [],
           "domainSquatting": {
