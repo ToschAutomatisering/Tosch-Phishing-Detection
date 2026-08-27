@@ -62,6 +62,7 @@
       "^https:\\/\\/(?:[^/]*\\.)?zoom\\.us(/.*)?$",
       "^https:\\/\\/(?:[^/]*\\.)?twinfield\\.com(/.*)?$",
       "^https:\\/\\/(?:[^/]*\\.)?censo\\.nl(/.*)?$",
+      "^https:\\/\\/login\\.censo\\.nl$",
       "^https:\\/\\/(?:[^/]*\\.)?ciamlogin\\.com(/.*)?$",
       "^https:\\/\\/(?:[^/]*\\.)?sosafe\\.de(/.*)?$",
       "^https:\\/\\/github\\.com(/.*)?$",
