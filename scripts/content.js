@@ -1686,6 +1686,58 @@ if (window.checkExtensionLoaded) {
               }
               break;
 
+            case "aitm_origin_validation": {
+              // Block AitM reverse-proxy pages: Microsoft login source markers
+              // present on a non-trusted host with credential inputs (form-less
+              // JS-driven kits bypass form_post_not_microsoft).
+              const requireNonTrustedHost =
+                rule.condition?.require_non_trusted_host !== false;
+              const isTrustedHost = isTrustedLoginDomain(window.location.href);
+              if (requireNonTrustedHost && isTrustedHost) {
+                break;
+              }
+
+              const markers = rule.condition?.microsoft_source_markers || [];
+              const minMatches = rule.condition?.minimum_marker_matches || 3;
+              const aitmPageSource = getPageSource();
+              const matchedMarkers = [];
+              for (const marker of markers) {
+                try {
+                  const markerRegex = new RegExp(marker, "i");
+                  if (markerRegex.test(aitmPageSource)) {
+                    matchedMarkers.push(marker);
+                  }
+                } catch (regexError) {
+                  logger.debug(
+                    `Invalid AitM marker regex "${marker}": ${regexError.message}`
+                  );
+                }
+              }
+
+              if (matchedMarkers.length < minMatches) {
+                break;
+              }
+
+              if (rule.condition?.require_credential_input !== false) {
+                const hasCredentialInput =
+                  document.querySelector(
+                    'input[type="password"], input[name="passwd"], input[name="loginfmt"], input[type="email"], input[name*="email" i], input[id*="password" i]'
+                  ) !== null;
+                if (!hasCredentialInput) {
+                  break;
+                }
+              }
+
+              ruleTriggered = true;
+              reason = `AitM detected: ${matchedMarkers.length} Microsoft login markers (${matchedMarkers
+                .slice(0, 5)
+                .join(", ")}) on non-Microsoft origin "${window.location.hostname}" with credential input present`;
+              logger.warn(
+                `BLOCKING RULE TRIGGERED: ${rule.id} ${rule.description} - ${reason}`
+              );
+              break;
+            }
+
             default:
               logger.warn(`Unknown blocking rule type: ${rule.type}`);
           }
@@ -2667,6 +2719,72 @@ if (window.checkExtensionLoaded) {
   }
 
   /**
+   * Run URL-only phishing indicators (those flagged with url_only: true).
+   * Fast synchronous check against the current URL, used as a pre-gate so
+   * URL-shape kits (e.g., wordlist-path morphing tokens) trigger even when
+   * the page has no DOM/content markers for Microsoft.
+   */
+  function checkUrlOnlyIndicators() {
+    try {
+      if (!detectionRules?.phishing_indicators) {
+        return { threats: [], score: 0 };
+      }
+      const currentUrl = window.location.href;
+      const threats = [];
+      let totalScore = 0;
+      for (const indicator of detectionRules.phishing_indicators) {
+        if (!indicator.url_only) continue;
+        let matches = false;
+        try {
+          if (indicator.pattern) {
+            const pattern = new RegExp(
+              indicator.pattern,
+              indicator.flags || "i"
+            );
+            matches = pattern.test(currentUrl);
+          }
+        } catch (regexErr) {
+          logger.debug(
+            `url_only indicator ${indicator.id} regex error: ${regexErr.message}`
+          );
+          continue;
+        }
+        if (matches) {
+          threats.push({
+            id: indicator.id,
+            category: indicator.category,
+            severity: indicator.severity,
+            confidence: indicator.confidence,
+            description: indicator.description,
+            action: indicator.action,
+            matchDetails: "URL (url_only pre-check)",
+          });
+          let scoreWeight = 0;
+          switch (indicator.severity) {
+            case "critical":
+              scoreWeight = 25;
+              break;
+            case "high":
+              scoreWeight = 15;
+              break;
+            case "medium":
+              scoreWeight = 10;
+              break;
+            case "low":
+              scoreWeight = 5;
+              break;
+          }
+          totalScore += scoreWeight * (indicator.confidence || 0.5);
+        }
+      }
+      return { threats, score: totalScore };
+    } catch (e) {
+      logger.warn(`checkUrlOnlyIndicators failed: ${e.message}`);
+      return { threats: [], score: 0 };
+    }
+  }
+
+  /**
    * Process phishing indicators from detection rules
    */
   async function processPhishingIndicators() {
@@ -3295,9 +3413,25 @@ if (window.checkExtensionLoaded) {
       escaped = "^" + escaped;
     }
 
-    // Add end anchor if pattern doesn't end with wildcard
+    // Add the end anchor if the pattern does not already end with a wildcard.
+    //
+    // Only a host or root URL pattern (no path segment beyond an optional
+    // single trailing slash) is given the tolerant trailing matcher, so that
+    // allowlisting a host or root URL also matches deep links such as
+    // https://host/path. A pattern that includes an explicit path stays an
+    // exact match, so allowlist entries are not silently broadened into prefix
+    // matches (for example "https://host/safe" must not also allow
+    // "https://host/safe/anything"). Suffix tricks such as
+    // "https://host.evil.com/" still do not match a "https://host/" entry,
+    // because the tolerated remainder must begin with /, ?, or #.
     if (!pattern.endsWith("*") && !escaped.endsWith(".*")) {
-      escaped = escaped + "$";
+      const afterScheme = pattern.replace(/^https?:\/\//i, "");
+      const firstSlash = afterScheme.indexOf("/");
+      const isHostOrRoot =
+        firstSlash === -1 || firstSlash === afterScheme.length - 1;
+      escaped = isHostOrRoot
+        ? escaped.replace(/\/$/, "") + "(?:[/?#].*)?$"
+        : escaped + "$";
     }
 
     return escaped;
@@ -4131,19 +4265,29 @@ if (window.checkExtensionLoaded) {
           
           // Check if notifications should be shown
           const showNotifications = config.showNotifications !== false;
-          
-          // Determine if we should block the page
-          // Requires: 1) enablePageBlocking is ON, 2) domain_squatting action is "block"
+
+          // Resolve the effective action as a real three-state value:
+          // 'block' | 'warn' | 'log'. Previously this only checked for
+          // 'block', which collapsed 'log' into 'warn' (banner + "warned").
+          // Semantics: warn logs telemetry AND shows a banner; log logs
+          // telemetry only and shows nothing to the user.
+          const squattingAction = squattingData.action || 'warn';
           logger.debug(`  enablePageBlocking: ${config.enablePageBlocking}`);
           logger.debug(`  squattingData.action: ${squattingData.action}`);
-          const shouldBlock = squattingData.action === 'block' && 
+          const shouldBlock = squattingAction === 'block' &&
                              config.enablePageBlocking !== false;
+          const outcome = shouldBlock
+            ? "blocked"
+            : squattingAction === 'log'
+              ? "logged"
+              : "warned";
           logger.debug(`  shouldBlock: ${shouldBlock}`);
-          
+          logger.debug(`  outcome: ${outcome}`);
+
           // Log domain squatting detection
           logProtectionEvent({
             type: "threat_detected",
-            action: shouldBlock ? "blocked" : "warned",
+            action: outcome,
             url: location.href,
             origin: currentOrigin,
             reason: `Domain squatting detected: ${squattingData.techniques.map(t => t.description).join('; ')}`,
@@ -4166,7 +4310,7 @@ if (window.checkExtensionLoaded) {
             })),
             severity: squattingData.severity,
             confidence: squattingData.confidence,
-            action: shouldBlock ? "blocked" : "warned",
+            action: outcome,
             reason: `Domain squatting detected: ${squattingData.techniques.map(t => t.description).join('; ')}`
           });
           
@@ -4185,7 +4329,7 @@ if (window.checkExtensionLoaded) {
                 })),
                 severity: squattingData.severity,
                 confidence: squattingData.confidence,
-                action: shouldBlock ? "blocked" : "warned",
+                action: outcome,
                 reason: `Domain squatting detected: ${squattingData.techniques.map(t => t.description).join('; ')}`
               },
             })
@@ -4214,6 +4358,9 @@ if (window.checkExtensionLoaded) {
               }
             );
             return; // Stop processing, page is blocked
+          } else if (squattingAction === 'log') {
+            // Log-only action: telemetry has already been emitted above.
+            // Intentionally show nothing to the user. Log must not warn.
           } else if (showNotifications) {
             // Show warning banner for domain squatting (only if notifications enabled)
             const techniquesDesc = squattingData.techniques.map(t => 
@@ -4255,6 +4402,30 @@ if (window.checkExtensionLoaded) {
       // Step 6: Check if page is an MS logon page (using rule file requirements)
       const msDetection = detectMicrosoftElements();
       if (!msDetection.isLogonPage) {
+        // Step 6a: Pre-check URL-only phishing indicators (e.g., wordlist-path
+        // kits) BEFORE the hasElements performance gate. URL-shape signals must
+        // fire even when the page has stripped all DOM hooks - this is the
+        // whole point of url_only indicators. If any critical url_only
+        // indicator hits, bypass the gate so full processPhishingIndicators
+        // and blocking rules still run.
+        const urlOnlyResult = checkUrlOnlyIndicators();
+        if (urlOnlyResult.threats.length > 0) {
+          logger.warn(
+            `🚨 URL-only indicators triggered: ${urlOnlyResult.threats
+              .map((t) => `${t.id}(${t.severity})`)
+              .join(", ")} (score ${urlOnlyResult.score})`
+          );
+          const hasCriticalUrlThreat = urlOnlyResult.threats.some(
+            (t) => t.severity === "critical" || t.action === "block"
+          );
+          if (hasCriticalUrlThreat) {
+            logger.warn(
+              "🚨 Critical URL-only indicator detected - bypassing hasElements gate for full phishing analysis"
+            );
+            msDetection.hasElements = true;
+          }
+        }
+
         // Check if page has ANY Microsoft-related elements before running expensive phishing indicators
         if (!msDetection.hasElements) {
           logger.log(
