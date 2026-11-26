@@ -36,9 +36,9 @@ Finds domains using special characters that look similar to normal letters.
 Identifies domains based on common typing errors and keyboard slip-ups.
 
 **Examples Check catches:**
-- `micrisoft.com` → finger slipped to nearby key
+- `micrisoft.com` → finger slipped to a nearby key
 - `microssoft.com` → double-typed a letter
-- `microosft.com` → typo mixing up letters
+- `microosft.com` → transposed letters
 
 ### 4. **Suspicious Word Combination Detection**
 Spots domains that add words before or after legitimate domains to look more official.
@@ -49,36 +49,31 @@ Spots domains that add words before or after legitimate domains to look more off
 - `microsoft-auth.com`
 - `official-microsoft-support.com`
 
-Common suspicious words attackers use: `login`, `secure`, `verify`, `official`, `support`, `auth`, `signin`, `portal`
+Common suspicious words attackers use: `login`, `secure`, `verify`, `official`, `support`, `auth`, `signin`, `portal`.
 
 ## What Domains Are Protected?
 
-Check protects **30+ popular domains** by default, including:
+The default rules file doesn't protect any domains, so you choose what Check protects:
 
-**Microsoft Services:**
-- microsoft.com, microsoftonline.com, office.com, outlook.com, onedrive.com, and more
+- **Protected domains** (`domainSquatting.protectedDomains` in policy): the domains you want protected, such as your own and your clients' domains. When this list is set, it replaces the URL Allowlist domains below; domains listed in a custom rules file are still protected as well.
+- **Your URL Allowlist**: if no protected domains are set, Check protects the domains in your [URL Allowlist](../settings/detection-rules.md#url-allowlist-regex-or-url-with-wildcards) instead.
 
-**Other Popular Services:**
-- google.com, github.com, facebook.com, amazon.com, apple.com, paypal.com, and more
-
-**Plus: Your URL Allowlist**
-
-{% hint style="info" %}
-**Unified Protection:** Check uses your [URL Allowlist](../settings/detection-rules.md#url-allowlist-regex-or-url-with-wildcards) for double protection. Any domains you add there are automatically protected from squatting attempts too!
-
-For example, if you add `https://yourcompany.com/*` to your allowlist, Check will also protect against fake domains like `yourcompany.net` or `your-company.com`.
+{% hint style="warning" %}
+Allowlisting a third-party site to stop a false positive also makes it a protected domain if you haven't set protected domains. Set protected domains so the allowlist only controls which sites are skipped.
 {% endhint %}
+
+Names shorter than five letters (such as `om.nl` or `bbc.com`) are only matched on look-alike characters or as a separate word in a domain (`bbc-login.com`). Typo and partial-word checks on such short names catch too many real sites.
 
 ## How It Works in Practice
 
 When you visit a website, Check automatically:
 
-1. **Checks** if the domain looks similar to any protected domain
-2. **Analyzes** using all four detection methods
+1. **Checks** whether the domain looks similar to any protected domain
+2. **Analyzes** the domain using all four detection methods
 3. **Warns** you if it finds a suspicious match
 4. **Blocks** the page if it's clearly a phishing attempt
 
-You don't need to do anything - the protection works automatically in the background!
+You don't need to do anything—the protection works automatically in the background!
 
 ## Configuration
 
@@ -156,7 +151,7 @@ Note: Page blocking also requires "Enable Page Blocking" to be turned ON in sett
 }
 ```
 
-You can turn individual detection methods on/off. We recommend keeping all four enabled for maximum protection.
+You can turn individual detection methods on or off. We recommend keeping all four enabled for maximum protection.
 
 ## For MSPs and Enterprise IT
 
@@ -167,28 +162,15 @@ Domain squatting detection can be managed through Group Policy (GPO) or Microsof
 **What You Can Control via Policy:**
 - Detection sensitivity (character difference threshold)
 - Which detection methods are active
-- Additional protected domains specific to your organization
-
-**What's in the Rules File:**
 - Enable/disable domain squatting detection
-- Default protected domains list
-- Detection rules and patterns
-
-This separation gives you flexibility - you control the core security settings through your detection rules file, while still allowing policy-based customization for different clients or departments.
+- The domains to protect (`protectedDomains`)
 
 ### Adding Organization-Specific Domains
 
-{% hint style="info" %}
-**Use the URL Allowlist!** 
+Add your organization's domains to **protected domains**: the CIPP standard, the *Domain squatting protected domains* ADMX policy, `$protectedDomains` in the Windows deployment script, or `domainSquatting.protectedDomains` in the macOS/Linux and Firefox policy files.
 
-The easiest way to protect your organization's domains is to add them to the URL Allowlist in Detection Rules settings. This automatically:
-1. Prevents false positives on your internal sites
-2. Protects those domains from squatting attempts
-3. Works without modifying detection rules files
-{% endhint %}
-
-**Example:** Adding `https://contoso.com/*` to your allowlist protects against fake domains like:
-- `cont0so.com` (zero instead of o)
+**Example:** Protecting `contoso.com` catches fake domains like:
+- `cont0so.com` (zero instead of the letter "o")
 - `contos0.com` (zero at the end)
 - `login-contoso.com` (suspicious prefix)
 
@@ -208,8 +190,8 @@ See [General Settings](../settings/general.md) for configuring reporting and web
 
 If Check blocks a site you trust:
 
-1. **Add it to your URL Allowlist** in Detection Rules settings
-2. The site will be both allowed and protected from squatting
+1. **Add it to your URL Allowlist** in Detection Rules settings. Add the host (`https://example.com/*`) rather than a single page, so every page on the site is skipped
+2. If you haven't set protected domains, set them now. Otherwise the allowlisted site becomes protected too, and sites that look like it start getting flagged
 3. Report the false positive to help improve Check
 
 ### "A phishing site wasn't detected"
@@ -222,7 +204,7 @@ Domain squatting detection works alongside Check's other phishing protections. I
 
 ### "Settings are grayed out"
 
-If you can't see or change domain squatting settings, your IT department has configured these centrally. This is normal for managed deployments - contact your IT team if you need adjustments.
+If you can't see or change domain squatting settings, your IT department has configured these centrally. This is normal for managed deployments—contact your IT team if you need adjustments.
 
 ## Related Documentation
 
