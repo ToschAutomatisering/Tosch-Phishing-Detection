@@ -2836,6 +2836,10 @@ class CheckOptions {
       }
     });
 
+    if (this.elements.clearLogs) {
+      this.elements.clearLogs.style.display = "";
+    }
+
     // Remove enterprise notice
     const enterpriseNotice = document.querySelector(".enterprise-notice");
     if (enterpriseNotice) {
@@ -2888,6 +2892,11 @@ class CheckOptions {
 
     // Note: Developer console logging remains available for troubleshooting in managed mode
 
+    // Keep activity logs for incident investigation
+    if (this.elements.clearLogs) {
+      this.elements.clearLogs.style.display = "none";
+    }
+
     // If currently on a restricted tab, switch to logs tab
     if (restrictedTabs.includes(this.currentSection)) {
       this.switchSection("logs");
@@ -2913,8 +2922,16 @@ class CheckOptions {
           <strong>Enterprise Managed</strong>
           <p>This extension is managed by your organization. Most settings cannot be modified.</p>
         </div>
+        <button class="btn btn-secondary notice-action">
+          <span class="material-icons">refresh</span>
+          Update Rules Now
+        </button>
       </div>
     `;
+    const updateRulesButton = notice.querySelector(".notice-action");
+    updateRulesButton.addEventListener("click", () =>
+      this.refreshDetectionRules(updateRulesButton)
+    );
 
     // Insert after the header
     const contentHeader = document.querySelector(".content-header");
@@ -3429,13 +3446,13 @@ class CheckOptions {
   }
 
   // Detection Rules Management Methods
-  async refreshDetectionRules() {
+  async refreshDetectionRules(button = this.elements.refreshDetectionRules) {
     try {
       // Update button state
-      if (this.elements.refreshDetectionRules) {
-        this.elements.refreshDetectionRules.innerHTML =
+      if (button) {
+        button.innerHTML =
           '<span class="material-icons">hourglass_empty</span> Updating...';
-        this.elements.refreshDetectionRules.disabled = true;
+        button.disabled = true;
       }
 
       // Send message to background to force update detection rules
@@ -3462,10 +3479,10 @@ class CheckOptions {
       );
     } finally {
       // Restore button state
-      if (this.elements.refreshDetectionRules) {
-        this.elements.refreshDetectionRules.innerHTML =
+      if (button) {
+        button.innerHTML =
           '<span class="material-icons">refresh</span> Update Rules Now';
-        this.elements.refreshDetectionRules.disabled = false;
+        button.disabled = false;
       }
     }
   }
