@@ -197,3 +197,55 @@ test('forceUpdate reports its own result when another fetch overlaps', async () 
 
   assert.strictEqual((await forced).version, '1.3.0');
 });
+
+const MINUTE = 60 * 1000;
+
+test('caps the update interval at 30 minutes', async () => {
+  const manager = new DetectionRulesManager({ getConfig: async () => ({ updateInterval: 24 }) });
+  await manager.loadConfiguration();
+  assert.strictEqual(manager.updateInterval, 30 * MINUTE);
+});
+
+test('downloads rules older than 30 minutes on startup', async () => {
+  await seedCache(31 * MINUTE);
+  const manager = await startManager();
+
+  assert.strictEqual(remoteCalls, 1);
+  assert.strictEqual(manager.cachedRules.version, '1.3.0');
+});
+
+test('scheduled refresh downloads rules that are almost due', async () => {
+  await seedCache(29 * MINUTE);
+  const manager = await startManager();
+  assert.strictEqual(remoteCalls, 0);
+
+  await manager.refreshIfDue();
+  assert.strictEqual(remoteCalls, 1);
+  assert.strictEqual(manager.cachedRules.version, '1.3.0');
+});
+
+test('scheduled refresh skips fresh rules', async () => {
+  await seedCache(10 * MINUTE);
+  const manager = await startManager();
+
+  assert.strictEqual(manager.refreshIfDue(), null);
+  assert.strictEqual(remoteCalls, 0);
+});
+
+test('scheduled refresh shares the startup download', async () => {
+  await seedCache(48 * HOUR);
+  const pending = [];
+  remoteHandler = () => new Promise((resolve) => pending.push(resolve));
+  const tick = () => new Promise((resolve) => setImmediate(resolve));
+
+  const manager = new DetectionRulesManager({ getConfig: async () => ({}) });
+  await manager.initialize();
+  while (pending.length < 1) await tick();
+
+  const scheduled = manager.refreshIfDue();
+  pending[0](jsonResponse(NEW_RULES));
+  await scheduled;
+
+  assert.strictEqual(remoteCalls, 1);
+  assert.strictEqual(manager.cachedRules.version, '1.3.0');
+});

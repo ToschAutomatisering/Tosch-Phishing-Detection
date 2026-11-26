@@ -16,6 +16,8 @@ import logger from "./utils/logger.js";
 import { store as storeLog } from "./utils/background-logger.js";
 
 console.log("Check: Background service worker loaded");
+
+const RULES_REFRESH_ALARM = "check:rules-refresh";
 // Initialize logger with default settings before any components use it
 logger.init({ level: "info", enabled: true });
 
@@ -349,8 +351,43 @@ class CheckBackground {
       } else if (alarm.name === "check:flush") {
         this.flushScheduled = false;
         this._doFlush().catch(() => {});
+      } else if (alarm.name === RULES_REFRESH_ALARM) {
+        this._refreshRulesOnAlarm().catch(() => {});
       }
     });
+  }
+
+  // Keep the periodic rules download scheduled. Only (re)create the alarm when
+  // it is missing or has another period: recreating it on every service worker
+  // start would reset the timer and the alarm might never fire.
+  async _ensureRulesRefreshAlarm() {
+    try {
+      const periodInMinutes = Math.max(
+        1,
+        Math.round(this.detectionRulesManager.updateInterval / 60000)
+      );
+      const existing = await chrome.alarms.get(RULES_REFRESH_ALARM);
+      if (existing && existing.periodInMinutes === periodInMinutes) {
+        return;
+      }
+      await chrome.alarms.create(RULES_REFRESH_ALARM, {
+        delayInMinutes: periodInMinutes,
+        periodInMinutes,
+      });
+      logger.log(
+        `Check: detection rules refresh scheduled every ${periodInMinutes} minutes`
+      );
+    } catch (error) {
+      logger.warn(
+        "Check: failed to schedule detection rules refresh:",
+        error?.message || error
+      );
+    }
+  }
+
+  async _refreshRulesOnAlarm() {
+    await this.initialize().catch(() => {});
+    await this.detectionRulesManager.refreshIfDue();
   }
 
   setupMessageHandlers() {
@@ -403,7 +440,8 @@ class CheckBackground {
 
       // Initialize detection rules manager
       await this.detectionRulesManager.initialize();
-      
+      await this._ensureRulesRefreshAlarm();
+
       // Initialize domain squatting detector with rules and URL allowlist
       const detectionRules = this.detectionRulesManager.cachedRules;
       if (detectionRules) {

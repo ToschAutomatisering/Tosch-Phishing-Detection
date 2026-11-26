@@ -36,6 +36,14 @@ const KNOWN_RULE_SECTIONS = {
 const FAILED_FETCH_RETRY_DELAY = 5 * 60 * 1000;
 const FAILED_FETCH_KEY = "detection_rules_last_failed_fetch";
 
+// Tosch: download the rules at least every 30 minutes. Longer intervals from
+// the local config or a managed policy are capped to this value.
+export const MAX_UPDATE_INTERVAL = 30 * 60 * 1000;
+
+// The periodic alarm can fire slightly before the cache expires; refresh
+// anyway within this margin so a 30 minute alarm doesn't skip a cycle.
+const SCHEDULED_REFRESH_MARGIN = 2 * 60 * 1000;
+
 function isValidDetectionRules(rules) {
   if (!rules || typeof rules !== "object" || Array.isArray(rules)) {
     return false;
@@ -58,7 +66,7 @@ export class DetectionRulesManager {
   constructor(configManager = null, onRulesUpdated = null) {
     this.cachedRules = null;
     this.lastUpdate = 0;
-    this.updateInterval = 1 * 60 * 60 * 1000; // Default: 1 hour
+    this.updateInterval = MAX_UPDATE_INTERVAL; // Default: 30 minutes
     this.cacheKey = "detection_rules_cache";
     this.fallbackUrl = chrome.runtime.getURL("rules/detection-rules.json");
     this.remoteUrl =
@@ -87,29 +95,25 @@ export class DetectionRulesManager {
         .catch(() => ({}));
       this._lastFailedFetchAt = stored?.[FAILED_FETCH_KEY] || 0;
 
-      if (!this.cachedRules && this._isInFailureBackoff(Date.now())) {
-        const response = await fetch(this.fallbackUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-        this.cachedRules = await response.json();
-        this.lastUpdate = 0;
-        this._usingFallback = true;
-      }
-
+      if (!this.cachedRules && this._isInFailureBackoff(Date.now())) {
+        const response = await fetch(this.fallbackUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        this.cachedRules = await response.json();
+        this.lastUpdate = 0;
+        this._usingFallback = true;
+      }
+
       // Check if we need to update
       const now = Date.now();
       if (
         now - this.lastUpdate > this.updateInterval &&
         !this._isInFailureBackoff(now)
       ) {
-        // Update in background
-        this.updateDetectionRules().catch((error) => {
-          logger.warn(
-            "Failed to update detection rules in background:",
-            error.message
-          );
-        });
+        // Update in background; shared with the scheduled refresh so a worker
+        // woken by the alarm doesn't download the rules twice.
+        this._scheduleBackgroundRefresh("startup");
       }
 
       this.initialized = true;
@@ -145,6 +149,9 @@ export class DetectionRulesManager {
         this.updateInterval = this.config.updateInterval * 60 * 60 * 1000; // Convert hours to milliseconds
       } else if (this.config.detectionRules?.updateInterval) {
         this.updateInterval = this.config.detectionRules.updateInterval;
+      }
+      if (!(this.updateInterval > 0) || this.updateInterval > MAX_UPDATE_INTERVAL) {
+        this.updateInterval = MAX_UPDATE_INTERVAL;
       }
 
       logger.log("DetectionRulesManager configuration loaded:", {
@@ -401,6 +408,22 @@ export class DetectionRulesManager {
       }
       throw error;
     }
+  }
+
+  /**
+   * Called by the periodic alarm in the background script. Downloads the
+   * rules when they are due, so they stay current even without page visits.
+   */
+  refreshIfDue(now = Date.now()) {
+    if (this._isInFailureBackoff(now)) {
+      return null;
+    }
+    const due =
+      !this.cachedRules ||
+      this._usingFallback ||
+      this.lastUpdate <= 0 ||
+      now - this.lastUpdate >= this.updateInterval - SCHEDULED_REFRESH_MARGIN;
+    return due ? this._scheduleBackgroundRefresh("scheduled") : null;
   }
 
   _isInFailureBackoff(now) {

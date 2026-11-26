@@ -55,7 +55,7 @@
     },
     "updateInterval": {
       "title": "Update-interval (uren)",
-      "description": "Hoe vaak detectieregels moeten worden bijgewerkt in uren",
+      "description": "Hoe vaak detectieregels moeten worden bijgewerkt in uren. De Tosch-versie haalt de regels altijd minimaal elke 30 minuten op; een langer interval heeft geen effect.",
       "type": "integer",
       "minimum": 1,
       "maximum": 168,
