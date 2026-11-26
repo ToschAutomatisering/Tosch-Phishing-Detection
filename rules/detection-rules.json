@@ -68,6 +68,7 @@
       "^https:\\/\\/github\\.com(/.*)?$",
       "^https:\\/\\/[^/]*\\.github\\.com(/.*)?$",
       "^https:\\/\\/[^/]*\\.github\\.io(/.*)?$"
+      "^https:\\/\\/login\\.s-bb\\.nl$"
     ],
     "context_indicators": {
       "description": "Additional context that indicates legitimate discussion vs phishing",
